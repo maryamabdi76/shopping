@@ -15,12 +15,18 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Route::get('/homepagesite/{id}', function ($id) {
-//     if($id>10)
-//     echo "homepage $id";
-//     else
-//     echo "sorry";
-// });
+// Route::get('/homepagesite',array('as'=>'homepage',function () {
+    // if($id>10)
+    // echo "homepage $id";
+    // else
+    // echo "sorry";
+    // return route('homepage');//esme name ro behesh midim
+//     $url=route('homepage');
+//     return "<a href='$url'>test url link</a>";
+// }));
+    // Route::get('/alluserdatatables','Admin\UserController@alluserdatatables')->name('users.alluserdatatables');
+    // Route::resource('/admin/users','Admin\UserController');
+
 Auth::routes();
 
 
@@ -95,4 +101,4 @@ Route::get('/factor', ['as'=>'factor.factor','uses'=>'FactorController@factor'])
 
 Route::get('/transaction', ['as'=>'transaction.transaction','uses'=>'TransactionController@transaction']);
 
-Route::get('/thank', ['as'=>'transacti
+Route::get('/thank', ['as'=>'transaction.thank','uses'=>'TransactionController@thank']);
