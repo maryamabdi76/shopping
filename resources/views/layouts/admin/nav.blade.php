@@ -162,19 +162,19 @@
           {{-- <img src="{{asset('images/user4-128x128.jpg')}}" class="img-circle img-fluid" alt="User Image"> --}}
         </a>
         <div class="dropdown-menu  dropdown-menu-right">
-          
+
         {{-- </div> --}}
           {{-- <span class="dropdown-item dropdown-header text-write">
           {{ Auth::user()->name }}
           </span> --}}
           {{-- <div class="dropdown-divider"></div> --}}
-          
+
           <a href="#" class="dropdown-item">
             <i class="fa fa-lock mr-2"></i> Change Password
           </a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="{{ route('logout') }}"onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-            <i class="fa fa-power-off mr-2"></i> 
+            <i class="fa fa-power-off mr-2"></i>
             {{ __('Logout') }}
           </a>
           <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

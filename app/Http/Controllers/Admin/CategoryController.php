@@ -24,26 +24,16 @@ class CategoryController extends Controller
         return view('admin.category.index')->with('category',Category::all());
     }
 
-    public function add()
-    {
-        return view('admin.category.add');
-    }
-
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
+    public function create()
     {
-        $request->validate([
-            'categoryname'=>'required|string|max:255'
-        ]);
-        $form=new Category(); 
-        $form->categoryname=$request->post('categoryname');
-        $form->save();
-        return redirect('admin/category')->with('category',Category::all());
+        return view('admin.category.add');
     }
+
 
     /**
      * Store a newly created resource in storage.
@@ -53,7 +43,13 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'categoryname'=>'required|string|max:255'
+        ]);
+        $form=new Category();
+        $form->categoryname=$request->post('categoryname');
+        $form->save();
+        return redirect('admin/category')->with('category',Category::all());
     }
 
     /**

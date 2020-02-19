@@ -4,9 +4,18 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Users;
+use App\Models\Kala;
 
 class SiteController extends Controller
 {
+    public function welcome()
+    {
+        $data=array(
+            'product'=>Kala::all()
+        );
+        return view('welcome')->with($data);
+    }
+
     public function getall(){
         // $allusers=Users::all();
         $allusers=Users::with('Genders')->get();

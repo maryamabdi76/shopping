@@ -25,38 +25,18 @@ class ProductController extends Controller
         return view('admin.product.index')->with('product',$product);
     }
 
-    public function add()
-    {
-        
-        $data=array(
-            'cat'=>Category::all()
-        );
-        return view('admin.product.add')->with($data);
-    }
 
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
+    public function create()
     {
-        $request->validate([
-            'name'=>'required|string|max:255',
-            'description'=>'required|string|max:255',
-            // 'categoryid'=>'required|numeric|max:255',
-            'price'=>'required|numeric',
-            'num'=>'required|numeric|max:255',
-        ]);
-        $form=new Kala(); 
-        $form->name=$request->post('name');
-        $form->description=$request->post('description');
-        $form->categoryid=$request->post('categoryid');
-        $form->price=$request->post('price');
-        $form->num=$request->post('num');
-        $form->save();
-        return redirect('admin/product');
-
+        $data=array(
+            'cat'=>Category::all()
+        );
+        return view('admin.product.add')->with($data);
     }
 
     /**
@@ -67,8 +47,24 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name'=>'required|string|max:255',
+            'description'=>'required|string|max:255',
+            // 'categoryid'=>'required|numeric|max:255',
+            'price'=>'required|numeric',
+            'num'=>'required|numeric|max:255',
+        ]);
+        $form=new Kala();
+        $form->name=$request->post('name');
+        $form->description=$request->post('description');
+        $form->categoryid=$request->post('categoryid');
+        $form->price=$request->post('price');
+        $form->num=$request->post('num');
+        $form->save();
+        return redirect('admin/product');
+
     }
+
 
     /**
      * Display the specified resource.
@@ -110,7 +106,7 @@ class ProductController extends Controller
         $form=Kala::find($id);
         $form->name=$request->post('name');
         $form->description=$request->post('description');
-        // $form->categoryid=$request->post('categoryid');
+        $form->categoryid=$request->post('categoryid');
         $form->price=$request->post('price');
         $form->num=$request->post('num');
         $form->save();

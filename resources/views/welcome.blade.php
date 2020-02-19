@@ -80,225 +80,33 @@
         </div>
       </div>
       <div class=" owl-carousel owl-theme " id="hot-product">
-        {{-- <div class="col-lg-3 col-md-6"> --}}
-          <div class="single-product item">
+        @foreach($product as $v)
+        <div class="single-product item">
             <div class="product-img">
               <img class="img-fluid w-100" src="images/product/inspired-product/i1.jpg" alt="" />
               <div class="p_icon">
-                <a href="#">
-                  <i class="ti-eye"></i>
+                <a href="/productinfo/{{$v->id}}">
+                  <i class="fa fa-eye"></i>
                 </a>
                 <a href="#">
-                  <i class="ti-heart"></i>
+                  <i class="fa fa-heart"></i>
                 </a>
                 <a href="#">
-                  <i class="ti-shopping-cart"></i>
+                  <i class="fa fa-shopping-basket"></i>
                 </a>
               </div>
             </div>
             <div class="product-btm">
               <a href="#" class="d-block">
-                <h4>کیف</h4>
-              </a>
-              <div class="mt-3">
-                  <del>350.000</del>
-                <span class="mr-4">250.000</span>
-              </div>
-            </div>
-          </div>
-        {{-- </div> --}}
-        {{-- <div class="col-lg-3 col-md-6"> --}}
-            <div class="single-product item">
-              <div class="product-img">
-                <img class="img-fluid w-100" src="images/product/inspired-product/i2.jpg" alt="" />
-                <div class="p_icon">
-                  <a href="#">
-                    <i class="ti-eye"></i>
-                  </a>
-                  <a href="#">
-                    <i class="ti-heart"></i>
-                  </a>
-                  <a href="#">
-                    <i class="ti-shopping-cart"></i>
-                  </a>
-                </div>
-              </div>
-              <div class="product-btm">
-                <a href="#" class="d-block">
-                  <h4>شلوار</h4>
-                </a>
-                <div class="mt-3">
-                    <del>300.000</del>
-                  <span class="mr-4">200.000</span>
-                </div>
-              </div>
-            </div>
-          {{-- </div> --}}
-
-          {{-- <div class="col-lg-3 col-md-6"> --}}
-            <div class="single-product item">
-              <div class="product-img">
-                <img class="img-fluid w-100" src="images/product/inspired-product/i3.jpg" alt="" />
-                <div class="p_icon">
-                  <a href="#">
-                    <i class="ti-eye"></i>
-                  </a>
-                  <a href="#">
-                    <i class="ti-heart"></i>
-                  </a>
-                  <a href="#">
-                    <i class="ti-shopping-cart"></i>
-                  </a>
-                </div>
-              </div>
-              <div class="product-btm">
-                <a href="#" class="d-block">
-                  <h4>ساعت</h4>
-                </a>
-                <div class="mt-3">
-                    <del>500.000</del>
-                  <span class="mr-4">400.000</span>
-                </div>
-              </div>
-            </div>
-          {{-- </div> --}}
-          {{-- <div class="col-lg-3 col-md-6"> --}}
-            <div class="single-product item">
-                <div class="product-img">
-                  <img class="img-fluid w-100" src="images/product/inspired-product/i4.jpg" alt="" />
-                  <div class="p_icon">
-                    <a href="#">
-                      <i class="ti-eye"></i>
-                    </a>
-                    <a href="#">
-                      <i class="ti-heart"></i>
-                    </a>
-                    <a href="#">
-                      <i class="ti-shopping-cart"></i>
-                    </a>
-                  </div>
-                </div>
-                <div class="product-btm">
-                  <a href="#" class="d-block">
-                    <h4>کتونی</h4>
-                  </a>
-                  <div class="mt-3">
-                      <del>300.000</del>
-                    <span class="mr-4">200.000</span>
-                  </div>
-                </div>
-              </div>
-            {{-- </div> --}}
-            {{-- <div class="col-lg-3 col-md-6"> --}}
-          <div class="single-product item">
-            <div class="product-img">
-              <img class="img-fluid w-100" src="images/product/inspired-product/i5.jpg" alt="" />
-              <div class="p_icon">
-                <a href="#">
-                  <i class="ti-eye"></i>
-                </a>
-                <a href="#">
-                  <i class="ti-heart"></i>
-                </a>
-                <a href="#">
-                  <i class="ti-shopping-cart"></i>
-                </a>
-              </div>
-            </div>
-            <div class="product-btm">
-              <a href="#" class="d-block">
-                <h4>ساعت</h4>
-              </a>
-              <div class="mt-3">
-                  <del>350.000</del>
-                <span class="mr-4">250.000</span>
-              </div>
-            </div>
-          </div>
-        {{-- </div> --}}
-        {{-- <div class="col-lg-3 col-md-6"> --}}
-          <div class="single-product item">
-            <div class="product-img">
-              <img class="img-fluid w-100" src="images/product/inspired-product/i6.jpg" alt="" />
-              <div class="p_icon">
-                <a href="#">
-                  <i class="ti-eye"></i>
-                </a>
-                <a href="#">
-                  <i class="ti-heart"></i>
-                </a>
-                <a href="#">
-                  <i class="ti-shopping-cart"></i>
-                </a>
-              </div>
-            </div>
-            <div class="product-btm">
-              <a href="#" class="d-block">
-                <h4>کتونی</h4>
+                <h4>{{$v->category->categoryname}} {{$v->name}}</h4>
               </a>
               <div class="mt-3">
                   <del>300.000</del>
-                <span class="mr-4">200.000</span>
+                <span class="mr-4">{{$v->price}} تومان</span>
               </div>
             </div>
           </div>
-        {{-- </div> --}}
-
-        {{-- <div class="col-lg-3 col-md-6"> --}}
-          <div class="single-product item">
-            <div class="product-img">
-              <img class="img-fluid w-100" src="images/product/inspired-product/i7.jpg" alt="" />
-              <div class="p_icon">
-                <a href="#">
-                  <i class="ti-eye"></i>
-                </a>
-                <a href="#">
-                  <i class="ti-heart"></i>
-                </a>
-                <a href="#">
-                  <i class="ti-shopping-cart"></i>
-                </a>
-              </div>
-            </div>
-            <div class="product-btm">
-              <a href="#" class="d-block">
-                <h4>کیف</h4>
-              </a>
-              <div class="mt-3">
-                  <del>500.000</del>
-                <span class="mr-4">400.000</span>
-              </div>
-            </div>
-          {{-- </div> --}}
-        </div>
-
-        {{-- <div class="col-lg-3 col-md-6"> --}}
-          <div class="single-product item">
-            <div class="product-img">
-              <img class="img-fluid w-100" src="images/product/inspired-product/i8.jpg" alt="" />
-              <div class="p_icon">
-                <a href="#">
-                  <i class="ti-eye"></i>
-                </a>
-                <a href="#">
-                  <i class="ti-heart"></i>
-                </a>
-                <a href="#">
-                  <i class="ti-shopping-cart"></i>
-                </a>
-              </div>
-            </div>
-            <div class="product-btm">
-              <a href="#" class="d-block">
-                <h4>کفش</h4>
-              </a>
-              <div class="mt-3">
-                  <del>300.000</del>
-                <span class="mr-4">200.000</span>
-              </div>
-            </div>
-          </div>
-        {{-- </div> --}}
+        @endforeach
 
     </div>
     {{-- <a class="main_btn" style="display:block;margin:0 auto;width:15%" href="#">مشاهده بیشتر</a> --}}
@@ -317,115 +125,35 @@
         </div>
       </div>
       <div class="row">
+        @foreach($product as $v)
         <div class="col-md-3 col-6 mb-20">
           <div class="single-product item">
             <div class="product-img">
               <img class="img-fluid w-100" src="images/product/inspired-product/i1.jpg" alt="" />
               <div class="p_icon">
                 <a href="#">
-                  <i class="ti-eye"></i>
+                  <i class="fa fa-eye"></i>
                 </a>
                 <a href="#">
-                  <i class="ti-heart"></i>
+                  <i class="fa fa-heart"></i>
                 </a>
                 <a href="#">
-                  <i class="ti-shopping-cart"></i>
+                  <i class="fa fa-shopping-basket"></i>
                 </a>
               </div>
             </div>
             <div class="product-btm">
               <a href="#" class="d-block">
-                <h4>کیف</h4>
+                <h4>{{$v->category->categoryname}} {{$v->name}}</h4>
               </a>
               <div class="mt-3">
                   <del>350.000</del>
-                <span class="mr-4">250.000</span>
+                <span class="mr-4">{{$v->price}} تومان</span>
               </div>
             </div>
           </div>
         </div>
-        <div class="col-md-3 col-6  mb-20">
-            <div class="single-product item">
-              <div class="product-img">
-                <img class="img-fluid w-100" src="images/product/inspired-product/i2.jpg" alt="" />
-                <div class="p_icon">
-                  <a href="#">
-                    <i class="ti-eye"></i>
-                  </a>
-                  <a href="#">
-                    <i class="ti-heart"></i>
-                  </a>
-                  <a href="#">
-                    <i class="ti-shopping-cart"></i>
-                  </a>
-                </div>
-              </div>
-              <div class="product-btm">
-                <a href="#" class="d-block">
-                  <h4>شلوار</h4>
-                </a>
-                <div class="mt-3">
-                    <del>300.000</del>
-                  <span class="mr-4">200.000</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-3 col-6 mb-20">
-            <div class="single-product item">
-              <div class="product-img">
-                <img class="img-fluid w-100" src="images/product/inspired-product/i3.jpg" alt="" />
-                <div class="p_icon">
-                  <a href="#">
-                    <i class="ti-eye"></i>
-                  </a>
-                  <a href="#">
-                    <i class="ti-heart"></i>
-                  </a>
-                  <a href="#">
-                    <i class="ti-shopping-cart"></i>
-                  </a>
-                </div>
-              </div>
-              <div class="product-btm">
-                <a href="#" class="d-block">
-                  <h4>ساعت</h4>
-                </a>
-                <div class="mt-3">
-                    <del>500.000</del>
-                  <span class="mr-4">400.000</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-3 col-6  mb-20">
-            <div class="single-product item">
-                <div class="product-img">
-                  <img class="img-fluid w-100" src="images/product/inspired-product/i4.jpg" alt="" />
-                  <div class="p_icon">
-                    <a href="#">
-                      <i class="ti-eye"></i>
-                    </a>
-                    <a href="#">
-                      <i class="ti-heart"></i>
-                    </a>
-                    <a href="#">
-                      <i class="ti-shopping-cart"></i>
-                    </a>
-                  </div>
-                </div>
-                <div class="product-btm">
-                  <a href="#" class="d-block">
-                    <h4>کتونی</h4>
-                  </a>
-                  <div class="mt-3">
-                      <del>300.000</del>
-                    <span class="mr-4">200.000</span>
-                  </div>
-                </div>
-              </div>
-            </div>
+        @endforeach
 
     </div>
     {{-- <a class="main_btn" style="display:block;margin:0 auto;width:15%" href="#">مشاهده بیشتر</a> --}}
@@ -443,217 +171,33 @@
         </div>
       </div>
       <div class=" owl-carousel owl-theme">
-        {{-- <div class="col-lg-3 col-md-6"> --}}
-          <div class="single-product item">
+        @foreach($product as $v)
+        <div class="single-product item">
             <div class="product-img">
               <img class="img-fluid w-100" src="images/product/inspired-product/i1.jpg" alt="" />
               <div class="p_icon">
-                <a href="#">
-                  <i class="ti-eye"></i>
+                <a href="/productinfo/{{$v->id}}">
+                  <i class="fa fa-eye"></i>
                 </a>
                 <a href="#">
-                  <i class="ti-heart"></i>
+                  <i class="fa fa-heart"></i>
                 </a>
                 <a href="#">
-                  <i class="ti-shopping-cart"></i>
+                  <i class="fa fa-shopping-basket"></i>
                 </a>
               </div>
             </div>
             <div class="product-btm">
               <a href="#" class="d-block">
-                <h4>کیف</h4>
+                <h4>{{$v->category->categoryname}} {{$v->name}}</h4>
               </a>
               <div class="mt-3">
-                <span class="mr-4">250.000</span>
+                <span class="mr-4">{{$v->price}} تومان</span>
               </div>
             </div>
           </div>
-        {{-- </div> --}}
-        {{-- <div class="col-lg-3 col-md-6"> --}}
-            <div class="single-product item">
-              <div class="product-img">
-                <img class="img-fluid w-100" src="images/product/inspired-product/i2.jpg" alt="" />
-                <div class="p_icon">
-                  <a href="#">
-                    <i class="ti-eye"></i>
-                  </a>
-                  <a href="#">
-                    <i class="ti-heart"></i>
-                  </a>
-                  <a href="#">
-                    <i class="ti-shopping-cart"></i>
-                  </a>
-                </div>
-              </div>
-              <div class="product-btm">
-                <a href="#" class="d-block">
-                  <h4>شلوار</h4>
-                </a>
-                <div class="mt-3">
-                  <span class="mr-4">200.000</span>
-                </div>
-              </div>
-            </div>
-          {{-- </div> --}}
+        @endforeach
 
-          {{-- <div class="col-lg-3 col-md-6"> --}}
-            <div class="single-product item">
-              <div class="product-img">
-                <img class="img-fluid w-100" src="images/product/inspired-product/i3.jpg" alt="" />
-                <div class="p_icon">
-                  <a href="#">
-                    <i class="ti-eye"></i>
-                  </a>
-                  <a href="#">
-                    <i class="ti-heart"></i>
-                  </a>
-                  <a href="#">
-                    <i class="ti-shopping-cart"></i>
-                  </a>
-                </div>
-              </div>
-              <div class="product-btm">
-                <a href="#" class="d-block">
-                  <h4>ساعت</h4>
-                </a>
-                <div class="mt-3">
-                  <span class="mr-4">400.000</span>
-                </div>
-              </div>
-            </div>
-          {{-- </div> --}}
-          {{-- <div class="col-lg-3 col-md-6"> --}}
-            <div class="single-product item">
-                <div class="product-img">
-                  <img class="img-fluid w-100" src="images/product/inspired-product/i4.jpg" alt="" />
-                  <div class="p_icon">
-                    <a href="#">
-                      <i class="ti-eye"></i>
-                    </a>
-                    <a href="#">
-                      <i class="ti-heart"></i>
-                    </a>
-                    <a href="#">
-                      <i class="ti-shopping-cart"></i>
-                    </a>
-                  </div>
-                </div>
-                <div class="product-btm">
-                  <a href="#" class="d-block">
-                    <h4>کتونی</h4>
-                  </a>
-                  <div class="mt-3">
-                    <span class="mr-4">200.000</span>
-                  </div>
-                </div>
-              </div>
-            {{-- </div> --}}
-            {{-- <div class="col-lg-3 col-md-6"> --}}
-          <div class="single-product item">
-            <div class="product-img">
-              <img class="img-fluid w-100" src="images/product/inspired-product/i5.jpg" alt="" />
-              <div class="p_icon">
-                <a href="#">
-                  <i class="ti-eye"></i>
-                </a>
-                <a href="#">
-                  <i class="ti-heart"></i>
-                </a>
-                <a href="#">
-                  <i class="ti-shopping-cart"></i>
-                </a>
-              </div>
-            </div>
-            <div class="product-btm">
-              <a href="#" class="d-block">
-                <h4>ساعت</h4>
-              </a>
-              <div class="mt-3">
-                <span class="mr-4">250.000</span>
-              </div>
-            </div>
-          </div>
-        {{-- </div> --}}
-        {{-- <div class="col-lg-3 col-md-6"> --}}
-          <div class="single-product item">
-            <div class="product-img">
-              <img class="img-fluid w-100" src="images/product/inspired-product/i6.jpg" alt="" />
-              <div class="p_icon">
-                <a href="#">
-                  <i class="ti-eye"></i>
-                </a>
-                <a href="#">
-                  <i class="ti-heart"></i>
-                </a>
-                <a href="#">
-                  <i class="ti-shopping-cart"></i>
-                </a>
-              </div>
-            </div>
-            <div class="product-btm">
-              <a href="#" class="d-block">
-                <h4>کتونی</h4>
-              </a>
-              <div class="mt-3">
-                <span class="mr-4">200.000</span>
-              </div>
-            </div>
-          </div>
-        {{-- </div> --}}
-
-        {{-- <div class="col-lg-3 col-md-6"> --}}
-          <div class="single-product item">
-            <div class="product-img">
-              <img class="img-fluid w-100" src="images/product/inspired-product/i7.jpg" alt="" />
-              <div class="p_icon">
-                <a href="#">
-                  <i class="ti-eye"></i>
-                </a>
-                <a href="#">
-                  <i class="ti-heart"></i>
-                </a>
-                <a href="#">
-                  <i class="ti-shopping-cart"></i>
-                </a>
-              </div>
-            </div>
-            <div class="product-btm">
-              <a href="#" class="d-block">
-                <h4>کیف</h4>
-              </a>
-              <div class="mt-3">
-                <span class="mr-4">400.000</span>
-              </div>
-            </div>
-          {{-- </div> --}}
-        </div>
-
-        {{-- <div class="col-lg-3 col-md-6"> --}}
-          <div class="single-product item">
-            <div class="product-img">
-              <img class="img-fluid w-100" src="images/product/inspired-product/i8.jpg" alt="" />
-              <div class="p_icon">
-                <a href="#">
-                  <i class="ti-eye"></i>
-                </a>
-                <a href="#">
-                  <i class="ti-heart"></i>
-                </a>
-                <a href="#">
-                  <i class="ti-shopping-cart"></i>
-                </a>
-              </div>
-            </div>
-            <div class="product-btm">
-              <a href="#" class="d-block">
-                <h4>کفش</h4>
-              </a>
-              <div class="mt-3">
-                <span class="mr-4">200.000</span>
-              </div>
-            </div>
-          </div>
-        {{-- </div> --}}
 
     </div>
     {{-- <a class="main_btn" style="display:block;margin:0 auto;width:15%" href="#">مشاهده بیشتر</a> --}}

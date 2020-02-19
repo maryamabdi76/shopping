@@ -1,5 +1,5 @@
 <?php
-
+use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,64 +11,53 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
-// Route::get('/homepagesite',array('as'=>'homepage',function () {
-    // if($id>10)
-    // echo "homepage $id";
-    // else
-    // echo "sorry";
-    // return route('homepage');//esme name ro behesh midim
-//     $url=route('homepage');
-//     return "<a href='$url'>test url link</a>";
-// }));
-    // Route::get('/alluserdatatables','Admin\UserController@alluserdatatables')->name('users.alluserdatatables');
-    // Route::resource('/admin/users','Admin\UserController');
+Route::get('/', 'SiteController@welcome')->name('welcome');
 
 Auth::routes();
 
+Route::get('/home', 'HomeController@index')->name('home')->middleware('Role');
 
-Route::get('/home', 'HomeController@index')->name('home');
-
-
-// Route::resource('/admin/users','Admin\UserController', ['except'=>['show','create','store']]);
-Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function(){
-
+Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('Role')->group(function(){
     Route::get('alluserdatatables', 'UserController@alluserdatatables')->name('users.alluserdatatables');
-    Route::resource('/users','UserController', ['except'=>['show','create','store']]);
-
+    Route::resource('/users','UserController');
     Route::resource('/category','CategoryController');
     Route::resource('/product','ProductController');
+    Route::resource('/review','ReviewController');
 });
 
-
-Route::get('/edit/{id}', 'Admin\UserController@edit');
-Route::post('/update', 'Admin\UserController@update');
-Route::get('/delete/{id}', 'Admin\UserController@destroy');
-
-
-Route::get('/addPro', 'Admin\CategoryController@add');
-Route::post('/createPro', 'Admin\CategoryController@create');
-Route::get('/editPro/{id}', 'Admin\CategoryController@edit');
-Route::post('/updatePro', 'Admin\CategoryController@update');
-Route::get('/deletePro/{id}', 'Admin\CategoryController@destroy');
+Route::get('/edit/{id}', 'Admin\UserController@edit')->middleware('Role');
+Route::post('/update', 'Admin\UserController@update')->middleware('Role');
+Route::get('/delete/{id}', 'Admin\UserController@destroy')->middleware('Role');
 
 
-Route::get('/addProduct', 'Admin\ProductController@add');
-Route::post('/createProduct', 'Admin\ProductController@create');
-Route::get('/editProduct/{id}', 'Admin\ProductController@edit');
-Route::post('/updateProduct', 'Admin\ProductController@update');
-Route::get('/deleteProduct/{id}', 'Admin\ProductController@destroy');
+Route::get('/addPro', 'Admin\CategoryController@create')->middleware('Role');
+Route::post('/createPro', 'Admin\CategoryController@store')->middleware('Role');
+Route::get('/editPro/{id}', 'Admin\CategoryController@edit')->middleware('Role');
+Route::post('/updatePro', 'Admin\CategoryController@update')->middleware('Role');
+Route::get('/deletePro/{id}', 'Admin\CategoryController@destroy')->middleware('Role');
 
+
+Route::get('/addProduct', 'Admin\ProductController@create')->middleware('Role');
+Route::post('/createProduct', 'Admin\ProductController@store')->middleware('Role');
+Route::get('/editProduct/{id}', 'Admin\ProductController@edit')->middleware('Role');
+Route::post('/updateProduct', 'Admin\ProductController@update')->middleware('Role');
+Route::get('/deleteProduct/{id}', 'Admin\ProductController@destroy')->middleware('Role');
+
+Route::get('/addReview', 'Admin\ReviewController@create')->middleware('Role');
+Route::post('/createReview', 'Admin\ReviewController@store')->middleware('Role');
+Route::get('/editReview/{id}', 'Admin\ReviewController@edit')->middleware('Role');
+Route::post('/updateReview', 'Admin\ReviewController@update')->middleware('Role');
+Route::get('/deleteReview/{id}', 'Admin\ReviewController@destroy')->middleware('Role');
 
 
 Route::get('/all', ['as'=>'all','uses'=>'SiteController@getall']);
 
 Route::get('/updateusers/{id}', ['as'=>'update','uses'=>'SiteController@update']);
 Route::post('/validateUpdate', 'SiteController@validateUpdate');
-
 Route::get('/deleteusers/{id}', ['as'=>'all','uses'=>'SiteController@delete']);
 
 Route::get('/digitalproduct', ['as'=>'products.products','uses'=>'ProductController@product']);
@@ -81,8 +70,7 @@ Route::get('/productinfo/{id}', ['as'=>'products.productinfo','uses'=>'ProductCo
 Route::get('/support', ['as'=>'support.support','uses'=>'SupportController@support']);
 
 
-Route::get('/profile', ['as'=>'profile.profile','uses'=>'ProfileController@profile']);
-
+Route::get('/profile', 'ProfileController@profile')->name('profile');
 Route::get('/proinfoedit', ['as'=>'profile.proinfoedit','uses'=>'ProfileController@proinfoedit']);
 
 Route::get('/addressedit', ['as'=>'profile.addressedit','uses'=>'ProfileController@addressedit']);

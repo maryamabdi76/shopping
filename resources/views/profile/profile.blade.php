@@ -206,13 +206,17 @@
 
                   <i class="fas fa-fw fa-user fa-4x lightbluec jccenter pt-4 pb-1 "></i><br>
                   <div class="text-center jccenter">
-                      <h3 class="darkbluec">نام کاربری</h3>
-                      <h6 class="pt-2">نام و نام خانوادگی</h6>
+                      <h3 class="darkbluec">{{ Auth::user()->username }}</h3>
+                      <h6 class="pt-2">{{ Auth::user()->name }}</h6>
                   </div>
                   <div class="pt-3 jccenter">
-                  <a href="profil.logout" class="btn btn-primary btn-user btn-block cartbtncolor font16">
+                  <a href="{{ route('logout') }}" class="btn btn-primary btn-user btn-block cartbtncolor font16"
+                  onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                       خروج از حساب کاربری
                   </a>
+                  <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                  </form>
                   </div>
                   <div class="pt-3 pb-4 jccenter">
                   <a href="profil.deleteacc" class="btn btn-primary btn-user btn-block cartbtncolorh p10x20">

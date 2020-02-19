@@ -35,11 +35,11 @@
 
         <div class="col-lg-5 offset-lg-1">
           <div class="s_product_text">
-            <h3>شلوار جین</h3>
-            <h2>200.000 تومان</h2>
+            <h3>{{$product->category->categoryname}} {{$product->name}}</h3>
+            <h2>{{$product->price}} تومان</h2>
             <ul class="list">
               <li>
-                <a class="active" href="#"> <span>دسته بندی</span>:  پوشاک/شلوار</a>
+                <a class="active" href="#"> <span>دسته بندی</span>: {{$product->category->categoryname}}</a>
               </li>
             </ul>
             <p>
@@ -282,14 +282,16 @@
                   </div>
                 </div>
               </div>
+              {{-- {{dd($review)}} --}}
+              {{-- @foreach($review as $v) --}}
               <div class="review_list">
                 <div class="review_item row">
-                    <div class="media col-md-2">
+                    <div class="media col-md-3">
                       <div class="d-flex">
                         <img src="{{asset('images/product/single-product/review-1.png')}}" alt=""/>
                       </div>
                       <div class="media-body">
-                        <h4>نظر کاربر </h4>
+                        {{-- <h4>{{$v->users->name}}</h4> --}}
                         <i class="fa fa-star"></i>
                         <i class="fa fa-star"></i>
                         <i class="fa fa-star"></i>
@@ -297,49 +299,11 @@
                         <i class="fa fa-star"></i>
                       </div>
                     </div>
-                    <p class=" col-md-10">
-                      لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد.
-
+                    <p class=" col-md-9">
+                        {{-- {{$v->comment}} --}}
                     </p>
                 </div>
-                <div class="review_item row">
-                  <div class="media col-md-2">
-                    <div class="d-flex">
-                      <img src="{{asset('images/product/single-product/review-2.png')}}" alt="" />
-                    </div>
-                    <div class="media-body">
-                      <h4>نظر کاربر </h4>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                    </div>
-                  </div>
-                  <p class="col-md-10">
-                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد.
-
-                  </p>
-                </div>
-                <div class="review_item row">
-                  <div class="media col-md-2">
-                    <div class="d-flex">
-                      <img src="{{asset('images/product/single-product/review-3.png')}}" alt="" />
-                    </div>
-                    <div class="media-body">
-                      <h4>نظر کاربر </h4>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                    </div>
-                  </div>
-                  <p class="col-md-10">
-                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد.
-
-                  </p>
-                </div>
+                {{-- @endforeach --}}
               </div>
             </div>
 

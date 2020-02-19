@@ -18,7 +18,7 @@ class Users extends Model
     }
     public function Review()
     {
-        return $this->belongsTo('App\Models\Review');
+        return $this->hasMany('App\Models\Review','id','userid');
     }
     public function UserAddress()
     {

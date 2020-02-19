@@ -3,11 +3,14 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Kala extends Model
 {
     public $table="kala";
-    public $timestamps=false;
+    // public $timestamps=false;
+    use SoftDeletes;
+    protected $date = ["deleted_at"];
     public function Category()
     {
         return $this->belongsTo('App\Models\Category','categoryid','id');
@@ -22,7 +25,7 @@ class Kala extends Model
     }
     public function Review()
     {
-        return $this->belongsTo('App\Models\Review');
+        return $this->hasMany('App\Models\Review','id','kalaid');
     }
     public function Factor()
     {

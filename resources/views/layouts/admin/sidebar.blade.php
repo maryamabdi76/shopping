@@ -15,9 +15,9 @@
         </div>
         <div class="info">
           <a href="#" class="d-block">{{ Auth::user()->name }}</a>
-          
+
         </div>
-        
+
       </div>
 
       <!-- Sidebar Menu -->
@@ -87,7 +87,29 @@
               </li>
             </ul>
           </li>
-          
+          <li class="nav-item has-treeview menu-open">
+            <a href="{{ route('admin.review.index') }}" class="nav-link">
+              <i class="nav-icon fa fa-comments"></i>
+              <p>
+                Reviews
+                <i class="right fa fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="/addReview" class="nav-link">
+                  <i class="fa fa-plus nav-icon"></i>
+                  <p>Add Review</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ route('admin.review.index') }}" class="nav-link">
+                  <i class="fa fa-circle-o nav-icon"></i>
+                  <p>Manage Reviews</p>
+                </a>
+              </li>
+            </ul>
+          </li>
       </nav>
       <!-- /.sidebar-menu -->
     </div>

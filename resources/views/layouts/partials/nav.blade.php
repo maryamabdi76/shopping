@@ -37,7 +37,7 @@
             </ul>
             <ul class="nav navbar-nav leftnav">
                 <li class="nav-item ">
-                    <a href="/profile" class="nav-link  user-action">
+                    <a href="/login" class="nav-link  user-action">
                         <i class="fa fa-user"></i>
                         {{-- <img src="https://www.tutorialrepublic.com/examples/images/avatar/2.jpg" class="avatar" alt="Avatar"> --}}
                     </a>
