@@ -26,13 +26,10 @@ class ProductController extends Controller
         $data=array(
             'product'=>Kala::findOrFail($id),
             // 'review'=>Review::all(),
-            'review'=>Kala::findOrFail($id)->Review()->with('Users'),
+            // 'review'=>Kala::findOrFail($id)->Review()->get(),
         );
-        // $data = Kala::find($id);
-        // Get all reviews that are not spam for the product and paginate them
-        // $reviews = $product->reviews()->with('user')->approved()->notSpam()->orderBy('created_at','desc')->paginate(100);
-
-        return view('products/productinfo')->with($data);
+        $product=Kala::findOrFail($id);
+        return view('products/productinfo')->with('product',$product);
     }
 }
 

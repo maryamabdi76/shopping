@@ -5,12 +5,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Reviews</h1>
+            <h1 class="m-0 text-dark text-right">نظرات</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Reviews</li>
+            <ol class="breadcrumb float-sm-left">
+              <li class="breadcrumb-item"><a href="/home">خانه</a></li>
+              <li class="breadcrumb-item active">نظرات</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -27,7 +27,7 @@
 {{-- <div class="container">
     <div class="row justify-content-center">
             <div class="col-md-12"> --}}
-                <div class="card">
+                <div class="card text-right">
                     {{-- <div class="card-header">Product</div> --}}
                         <div class="card-body">
                             <div class="table-responsive">
@@ -38,19 +38,19 @@
                                 </p> --}}
                                 <table id="mytable" class="table text-center table-bordred table-striped">
                                     <thead>
-                                        <th><input type="checkbox" class="checkthis" /></th>
+                                        {{-- <th><input type="checkbox" class="checkthis" /></th> --}}
                                         <th>آیدی</th>
                                         <th>نام کاربر</th>
                                         <th>نام محصول</th>
                                         <th>امتیاز</th>
                                         <th>نظر</th>
                                         <th>علاقمندی</th>
-                                        <th>Action</th>
+                                        <th> </th>
                                     </thead>
                                     <tbody>
                                         @foreach($review as $k=>$v)
                                         <tr>
-                                        <td><input type="checkbox" class="checkthis" /></td>
+                                        {{-- <td><input type="checkbox" class="checkthis" /></td> --}}
                                         <td>{{$v->id}}</td>
                                         <td>{{$v->users->name}}</td>
                                         <td>{{$v->kala->name}}</td>

@@ -25,12 +25,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Dashboard</h1>
+            <h1 class="m-0 text-dark text-right">داشبورد</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Dashboard</li>
+            <ol class="breadcrumb float-sm-left">
+              <li class="breadcrumb-item"><a href="/home">خانه</a></li>
+              <li class="breadcrumb-item active">داشبورد</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -94,7 +94,7 @@
               <span class="info-box-icon bg-warning elevation-1"><i class="fa fa-users"></i></span>
 
               <div class="info-box-content">
-                <span class="info-box-text">New Members</span>
+                <span class="info-box-text">تعداد کاربران</span>
               <span class="info-box-number">{{$users}}</span>
               </div>
               <!-- /.info-box-content -->
@@ -545,8 +545,8 @@
               <span class="info-box-icon"><i class="fa fa-comment"></i></span>
 
               <div class="info-box-content">
-                <span class="info-box-text">Direct Messages</span>
-                <span class="info-box-number">163,921</span>
+                <span class="info-box-text">تعداد نظرات</span>
+              <span class="info-box-number">{{$review}}</span>
               </div>
               <!-- /.info-box-content -->
             </div>

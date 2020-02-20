@@ -14,7 +14,7 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('css/app.css')}}" />
-    {{-- <link rel="stylesheet" href="{{asset('css/bootstrap-4.4.1-rtl.css')}}" /> --}}
+    <link rel="stylesheet" href="{{asset('css/bootstrap-4.4.1-rtl.css')}}" />
     <link rel="stylesheet" href="{{asset('vendors/linericon/style.css')}}" />
     <link rel="stylesheet" href="{{asset('css/font-awesome.min.css')}}" />
     <link rel="stylesheet" href="{{asset('css/themify-icons.css')}}" />
@@ -27,8 +27,8 @@
     <!-- main css -->
     {{-- <link rel="stylesheet" href="{{asset('css/style.css')}}"> --}}
     <link rel="stylesheet" href="{{asset('vendors/overlayScrollbars/css/OverlayScrollbars.min.css')}}" />
-    <link rel="stylesheet" href="{{asset('css/adminlte.min.css')}}">
-  
+    <link rel="stylesheet" href="{{asset('css/adminlte.css')}}">
+
     {{-- <link rel="stylesheet" href="{{asset('css/styleForm.css')}}"> --}}
     {{-- <link rel="stylesheet" href="css/responsive.css" /> --}}
 <style>
@@ -42,7 +42,7 @@ body {
 }
 
 .nav-treeview{
-  margin-left:10px;
+  margin-left:20px;
   border-left:1px solid #fff;
 }
 .nav-treeview .nav-item{

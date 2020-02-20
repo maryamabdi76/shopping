@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Users;
 use App\Models\Kala;
+use App\Models\Review;
 
 class HomeController extends Controller
 {
@@ -28,7 +29,8 @@ class HomeController extends Controller
     {
         $data=array(
             'users'=>Users::count(),
-            'product'=>Kala::count()
+            'product'=>Kala::count(),
+            'review'=>Review::count(),
         );
         return view('home')->with($data);
     }

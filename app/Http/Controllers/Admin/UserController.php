@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\User;
 use App\Models\Users;
+use App\Models\Role;
 use App\Models\Gender;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
@@ -22,8 +23,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        // $users=User::all();
-        $users=Users::with('Genders')->get();
+        $users=Users::with('Role')->get();
         return view('admin.users.index')->with('users',$users);
     }
 
@@ -75,7 +75,8 @@ class UserController extends Controller
     {
         $data=array(
             'user'=>User::find($id),
-            'gender'=>Gender::all()
+            'gender'=>Gender::all(),
+            'role'=>Role::all(),
         );
         return view('admin.users.edit')->with($data);
     }
@@ -97,6 +98,7 @@ class UserController extends Controller
         $form->mobile=$request->post('mobile');
         $form->email=$request->post('email');
         $form->gender=$request->post('gender');
+        // $form->role=$request->post('role');
         $form->save();
         return redirect('admin/users');
     }

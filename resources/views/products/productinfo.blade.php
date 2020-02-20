@@ -282,7 +282,7 @@
                   </div>
                 </div>
               </div>
-              {{-- {{dd($review)}} --}}
+              {{-- {{dd($product)}} --}}
               {{-- @foreach($review as $v) --}}
               <div class="review_list">
                 <div class="review_item row">
@@ -292,11 +292,14 @@
                       </div>
                       <div class="media-body">
                         {{-- <h4>{{$v->users->name}}</h4> --}}
+                        {{-- @for ($i=1; $i <= 5 ; $i++) --}}
+                        {{-- <span class="fa fa-star{{ ($i <= $review->rating) ? '' : '-empty'}}"></span> --}}
                         <i class="fa fa-star"></i>
                         <i class="fa fa-star"></i>
                         <i class="fa fa-star"></i>
                         <i class="fa fa-star"></i>
                         <i class="fa fa-star"></i>
+                        {{-- @endfor --}}
                       </div>
                     </div>
                     <p class=" col-md-9">

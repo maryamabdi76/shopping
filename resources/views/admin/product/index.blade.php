@@ -5,12 +5,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Products</h1>
+            <h1 class="m-0 text-dark text-right">محصولات</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Products</li>
+            <ol class="breadcrumb float-sm-left">
+              <li class="breadcrumb-item"><a href="/home">خانه</a></li>
+              <li class="breadcrumb-item active">محصولات</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -27,30 +27,30 @@
 {{-- <div class="container">
     <div class="row justify-content-center">
             <div class="col-md-12"> --}}
-                <div class="card">
+                <div class="card text-right">
                     {{-- <div class="card-header">Product</div> --}}
                         <div class="card-body">
                             <div class="table-responsive">
                                 <p data-placement="top" data-toggle="tooltip" title="Add">
                                     <a href="/addProduct" class="btn btn-primary " >
-                                    <span class=""></span> Add
+                                    <span class=""></span>اضافه کردن
                                     </a>
                                 </p>
                                 <table id="mytable" class="table text-center table-bordred table-striped">
                                     <thead>
-                                        <th><input type="checkbox" class="checkthis" /></th>
+                                        {{-- <th><input type="checkbox" class="checkthis" /></th> --}}
                                         <th>آیدی</th>
                                         <th>نام</th>
                                         <th>توضیحات</th>
                                         <th>دسته بندی</th>
                                         <th>قیمت</th>
                                         <th>تعداد</th>
-                                        <th>Action</th>
+                                        <th> </th>
                                     </thead>
                                     <tbody>
                                         @foreach($product as $k=>$v)
                                         <tr>
-                                        <td><input type="checkbox" class="checkthis" /></td>
+                                        {{-- <td><input type="checkbox" class="checkthis" /></td> --}}
                                         <td>{{$v->id}}</td>
                                         <td>{{$v->name}}</td>
                                         <td>{{$v->description}}</td>
@@ -64,7 +64,7 @@
                                             <a href="/deleteProduct/{{$v["id"]}}" class="btn btn-danger btn-xs" data-toggle="tooltip" title="Delete" onclick="return confirm('Are you sure you want to delete this item?');" >
                                                 <span class="fa fa-trash"></span>
                                             </a>
-                                        </td> 
+                                        </td>
                                       </tr>
                                     @endforeach
                                     </tbody>

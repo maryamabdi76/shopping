@@ -44,15 +44,16 @@ class LoginController extends Controller
         $id = auth()->user()->id;
         $user=Users::find($id);
         foreach($user->role as $role)
-        if($role->name=='admin'){
+        if($role->name=='Admin'){
             $this->redirectTo='home';
             return $this->redirectTo;
-        }elseif($role->name=='user'){
+        }elseif($role->name=='User'){
             $this->redirectTo='profile';
             return $this->redirectTo;
-        }else{
-            $this->redirectTo='/home';
-            return $this->redirectTo;
         }
+        // else{
+        //     $this->redirectTo='/home';
+        //     return $this->redirectTo;
+        // }
     }
 }

@@ -5,13 +5,13 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Users</h1>
+            <h1 class="m-0 text-dark text-right">کاربران</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item">Users</li>
-              <li class="breadcrumb-item active">Edit User</li>
+            <ol class="breadcrumb float-sm-left">
+              <li class="breadcrumb-item"><a href="#">خانه</a></li>
+              <li class="breadcrumb-item">کاربران</li>
+              <li class="breadcrumb-item active">ویرایش کاربر</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -25,11 +25,8 @@
         <!-- Info boxes -->
         <div class="row">
           <div class="col-12">
-{{-- <div class="container">
-    <div class="row justify-content-center">
-            <div class="col-md-12"> --}}
-            <div class="card">
-                <div class="card-header">{{ __('Edit User') }}</div>
+            <div class="card text-right">
+                <div class="card-header">{{ __('ویرایش کاربر') }}</div>
 
                 <div class="card-body">
                 <form method="POST" action="/update">
@@ -37,7 +34,7 @@
                         <input id="id" type="hidden" class="form-control " name="id" value="{{ $user->id}}" >
 
                         <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+                            <label for="name" class="col-md-4 col-form-label text-md-left">{{ __('نام ونام خانوادگی') }}</label>
 
                             <div class="col-md-6">
                                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ $user->name}}" required autocomplete="name" autofocus>
@@ -51,7 +48,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="username" class="col-md-4 col-form-label text-md-right">{{ __('Username') }}</label>
+                            <label for="username" class="col-md-4 col-form-label text-md-left">{{ __('نام کاربری') }}</label>
 
                             <div class="col-md-6">
                                 <input id="username" type="text" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ $user->username}}" required autocomplete="username" autofocus>
@@ -65,7 +62,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                            <label for="email" class="col-md-4 col-form-label text-md-left">{{ __('ایمیل') }}</label>
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $user->email }}" required autocomplete="email">
@@ -79,13 +76,12 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="gender" class="col-md-4 col-form-label text-md-right">{{ __('Gender') }}</label>
+                            <label for="gender" class="col-md-4 col-form-label text-md-left">{{ __('جنسیت') }}</label>
 
                             <div class="col-md-6">
                                 <select id="gender" name="gender" class="form-control @error('gender') is-invalid @enderror" name="gender" value="{{ old('gender') }}" required autocomplete="gender">
                                     <option value="" disabled @if(empty($user->gender)) selected @endif>جنسیت</option>
                                     @foreach($gender as $v)
-                                    {{-- <option value="{{$v->id}}" @if($v->name==2) selected @endif>آقا</option> --}}
                                     <option value="{{$v->id}}" @if($v->id==$user->gender) selected @endif>{{$v->name}}</option>
                                     @endforeach
                                 </select>
@@ -98,8 +94,27 @@
                             </div>
                         </div>
 
+                        {{-- <div class="form-group row">
+                            <label for="role" class="col-md-4 col-form-label text-md-left">{{ __('نقش') }}</label>
+
+                            <div class="col-md-6">
+                                <select id="role" name="role" class="form-control @error('role') is-invalid @enderror" name="role" value="{{ old('role') }}" required autocomplete="role">
+                                    <option value="" disabled @if(empty($user->role)) selected @endif>نقش</option>
+                                    @foreach($role as $v)
+                                    <option value="{{$v->id}}" @if($v->name==$user->role) selected @endif>{{$v->name}}</option>
+                                    @endforeach
+                                </select>
+
+                                @error('role')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div> --}}
+
                         <div class="form-group row">
-                            <label for="mobile" class="col-md-4 col-form-label text-md-right">{{ __('Mobile') }}</label>
+                            <label for="mobile" class="col-md-4 col-form-label text-md-left">{{ __('موبایل') }}</label>
 
                             <div class="col-md-6">
                                 <input id="mobile" type="text" class="form-control @error('mobile') is-invalid @enderror" name="mobile" value="{{ $user->mobile}}" required autocomplete="mobile" autofocus>
@@ -113,7 +128,7 @@
                         </div>
 
                         {{-- <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+                            <label for="password" class="col-md-4 col-form-label text-md-left">{{ __('Password') }}</label>
 
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
@@ -127,7 +142,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
+                            <label for="password-confirm" class="col-md-4 col-form-label text-md-left">{{ __('Confirm Password') }}</label>
 
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
@@ -135,9 +150,9 @@
                         </div> --}}
 
                         <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Edit') }}
+                            <div class="col-md-6 offset-md-4 ">
+                                <button type="submit" class="btn btn-primary w-100">
+                                    {{ __('ویرایش') }}
                                 </button>
                             </div>
                         </div>

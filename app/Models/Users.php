@@ -7,7 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Users extends Model
 {
     // public $timestamps = false;
-
+    protected $fillable = [
+        'username','name', 'email', 'gender', 'mobile', 'password',
+    ];
     public function Genders()
     {
         return $this->belongsTo('App\Models\Gender','gender','id');

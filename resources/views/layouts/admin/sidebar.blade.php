@@ -1,15 +1,15 @@
-<aside class="main-sidebar sidebar-dark-primary elevation-4">
+<aside class="main-sidebar sidebar-dark-primary elevation-4 text-right d-none d-lg-block">
     <!-- Brand Logo -->
     <a href="/" class="brand-link">
-      <img src="{{asset('images/AdminLTELogo.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
-           style="opacity: .8">
-      <span class="brand-text font-weight-light">Shopping</span>
+      {{-- <img src="{{asset('images/AdminLTELogo.png')}}" alt="AdminLTE" class="brand-image img-circle elevation-3"
+           style="opacity: .8"> --}}
+      <span class="brand-text font-weight-light mr-4">سایت فروشگاه</span>
     </a>
 
     <!-- Sidebar -->
     <div class="sidebar">
       <!-- Sidebar user panel (optional) -->
-      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+      <div class="user-panel pt-2 pb-2 pr-2 d-flex">
         <div class="image">
           <img src="{{asset('images/user4-128x128.jpg')}}" class="img-circle elevation-2" alt="User Image">
         </div>
@@ -28,24 +28,19 @@
           <li class="nav-item has-treeview ">
             <a href="{{ route('home') }}" class="nav-link">
               <i class="nav-icon fa fa-tachometer"></i>
-              <p>
-                Dashboard
-              </p>
+              <p>داشبورد</p>
             </a>
           </li>
           <li class="nav-item">
             <a href="{{ route('admin.users.index') }}" class="nav-link">
               <i class="nav-icon fa fa-users"></i>
-              <p>
-                Users
-              </p>
+              <p>کاربران</p>
             </a>
           </li>
           <li class="nav-item menu-open">
             <a href="{{ route('admin.category.index') }}" class="nav-link">
               <i class="nav-icon fa fa-folder-open-o"></i>
-              <p>
-                Categories
+              <p>دسته بندی ها
                 <i class="right fa fa-angle-left"></i>
               </p>
             </a>
@@ -53,13 +48,13 @@
               <li class="nav-item">
                 <a href="/addPro" class="nav-link">
                   <i class="fa fa-plus nav-icon"></i>
-                  <p>Add Category</p>
+                  <p>اضافه کردن دسته بندی</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="{{ route('admin.category.index') }}" class="nav-link">
                   <i class="fa fa-circle-o nav-icon"></i>
-                  <p>Manage Categories</p>
+                  <p>مدیریت دسته بندی ها</p>
                 </a>
               </li>
             </ul>
@@ -67,8 +62,7 @@
           <li class="nav-item has-treeview menu-open">
             <a href="{{ route('admin.product.index') }}" class="nav-link">
               <i class="nav-icon fa fa-cubes"></i>
-              <p>
-                Products
+              <p>محصولات
                 <i class="right fa fa-angle-left"></i>
               </p>
             </a>
@@ -76,39 +70,23 @@
               <li class="nav-item">
                 <a href="/addProduct" class="nav-link">
                   <i class="fa fa-plus nav-icon"></i>
-                  <p>Add Product</p>
+                  <p>اضافه کردن محصول</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="{{ route('admin.product.index') }}" class="nav-link">
                   <i class="fa fa-circle-o nav-icon"></i>
-                  <p>Manage Products</p>
+                  <p>مدیریت محصولات</p>
                 </a>
               </li>
             </ul>
           </li>
-          <li class="nav-item has-treeview menu-open">
+          
+          <li class="nav-item">
             <a href="{{ route('admin.review.index') }}" class="nav-link">
-              <i class="nav-icon fa fa-comments"></i>
-              <p>
-                Reviews
-                <i class="right fa fa-angle-left"></i>
-              </p>
+                <i class="nav-icon fa fa-comments"></i>
+                <p>نظرات</p>
             </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="/addReview" class="nav-link">
-                  <i class="fa fa-plus nav-icon"></i>
-                  <p>Add Review</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{ route('admin.review.index') }}" class="nav-link">
-                  <i class="fa fa-circle-o nav-icon"></i>
-                  <p>Manage Reviews</p>
-                </a>
-              </li>
-            </ul>
           </li>
       </nav>
       <!-- /.sidebar-menu -->

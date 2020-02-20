@@ -5,12 +5,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Users</h1>
+            <h1 class="m-0 text-dark text-right">کاربران</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Users</li>
+            <ol class="breadcrumb float-sm-left">
+              <li class="breadcrumb-item"><a href="#">خانه</a></li>
+              <li class="breadcrumb-item active">کاربران</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -38,30 +38,33 @@
                                 </p> --}}
                                 <table id="laravel_datatable" class="table text-center table-bordred table-striped  table-hover" >
                                     <thead>
-                                        <th><input type="checkbox" class="checkthis" /></th>
+                                        {{-- <th><input type="checkbox" class="checkthis" /></th> --}}
                                         <th>آیدی</th>
                                         <th>نام و نام خانوادگی</th>
                                         <th>نام کاربری</th>
                                         <th>تلفن همراه</th>
                                         <th>ایمیل</th>
-                                        {{-- <th>نقش</th> --}}
                                         <th>جنسیت</th>
+                                        <th>نقش</th>
                                         {{-- <th>تاریخ عضویت</th>
                                         <th>آخرین تغییر</th> --}}
-                                        <th>Action</th>
-                                        {{-- <th>Edit</th>
-                                        <th>Delete</th> --}}
+                                        <th> </th>
                                     </thead>
                                     <tbody>
                                         @foreach($users as $k=>$v)
                                         <tr>
-                                        <td><input type="checkbox" class="checkthis" /></td>
+                                        {{-- <td><input type="checkbox" class="checkthis" /></td> --}}
                                         <td>{{$v['id']}}</td>
                                         <td>{{$v['name']}}</td>
                                         <td>{{$v['username']}}</td>
                                         <td>{{$v['mobile']}}</td>
                                         <td>{{$v['email']}}</td>
                                         <td>{{$v->genders->name}}</td>
+                                        <td>
+                                            @foreach ($v->role as $role)
+                                            {{ $role->name }}
+                                            @endforeach
+                                        </td>
                                         {{-- <td>{{$v['created_at']}}</td>
                                         <td>{{$v['updated_at']}}</td> --}}
                                         <td>
