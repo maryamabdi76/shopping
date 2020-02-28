@@ -239,74 +239,84 @@
                           <i class="fa fa-star"></i>
                           <i class="fa fa-star"></i>
                           <i class="fa fa-star"></i>
-                          <i class="fa fa-star"></i> 01</a
-                        >
+                          <i class="fa fa-star"></i>
+                          <span class="badge badge-warning">1</span>
+                        </a>
                       </li>
+
                       <li class="text-center">
                         <a href="#">4 ستاره
                           <i class="fa fa-star"></i>
                           <i class="fa fa-star"></i>
                           <i class="fa fa-star"></i>
                           <i class="fa fa-star"></i>
-                          <i class="fa fa-star"></i> 01</a
-                        >
+                          <i class="fa fa-star-o"></i>
+                          <span class="badge badge-warning">1</span>
+                        </a>
                       </li>
+
                       <li class="text-center">
                         <a href="#">3 ستاره
                           <i class="fa fa-star"></i>
                           <i class="fa fa-star"></i>
                           <i class="fa fa-star"></i>
-                          <i class="fa fa-star"></i>
-                          <i class="fa fa-star"></i> 01</a
-                        >
+                          <i class="fa fa-star-o"></i>
+                          <i class="fa fa-star-o"></i>
+                          <span class="badge badge-warning">1</span>
+                          </a>
                       </li>
+
                       <li class="text-center">
                         <a href="#">2 ستاره
                           <i class="fa fa-star"></i>
                           <i class="fa fa-star"></i>
-                          <i class="fa fa-star"></i>
-                          <i class="fa fa-star"></i>
-                          <i class="fa fa-star"></i> 01</a
-                        >
+                          <i class="fa fa-star-o"></i>
+                          <i class="fa fa-star-o"></i>
+                          <i class="fa fa-star-o"></i>
+                          <span class="badge badge-warning">0</span>
+                          </a>
                       </li>
+
                       <li class="text-center">
                         <a href="#">1 ستاره
                           <i class="fa fa-star"></i>
-                          <i class="fa fa-star"></i>
-                          <i class="fa fa-star"></i>
-                          <i class="fa fa-star"></i>
-                          <i class="fa fa-star"></i> 01</a
-                        >
+                          <i class="fa fa-star-o"></i>
+                          <i class="fa fa-star-o"></i>
+                          <i class="fa fa-star-o"></i>
+                          <i class="fa fa-star-o"></i>
+                          <span class="badge badge-warning">0</span>
+                          </a>
                       </li>
                     </ul>
                   </div>
                 </div>
               </div>
-              {{-- {{dd($product)}} --}}
-              {{-- @foreach($review as $v) --}}
+              @foreach($reviews as $v)
+              {{-- {{dd($v)}} --}}
               <div class="review_list">
                 <div class="review_item row">
                     <div class="media col-md-3">
                       <div class="d-flex">
-                        <img src="{{asset('images/product/single-product/review-1.png')}}" alt=""/>
+                          @if($v->users->gender===1)
+                            <img class="avatarwh" src="{{asset('images/product/single-product/femaleavatar.png')}}" alt=""/>
+                          @endif
+                          @if($v->users->gender===2)
+                            <img class="avatarwh" src="{{asset('images/product/single-product/maleavatar.png')}}" alt=""/>
+                          @endif
                       </div>
                       <div class="media-body">
-                        {{-- <h4>{{$v->users->name}}</h4> --}}
-                        {{-- @for ($i=1; $i <= 5 ; $i++) --}}
-                        {{-- <span class="fa fa-star{{ ($i <= $review->rating) ? '' : '-empty'}}"></span> --}}
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        {{-- @endfor --}}
+                        <h4>{{$v->users->name}}</h4>
+                        @for ($i=1; $i <= 5 ; $i++)
+                        <i class="fa fa-star{{ ($i <= $v->rating) ? '' : '-o'}}"></i>
+                        @endfor
                       </div>
                     </div>
-                    <p class=" col-md-9">
-                        {{-- {{$v->comment}} --}}
+                    <p class=" col-md-9 mt-3">
+                        {{$v->comment}}
                     </p>
+                    <span class="text__tarikh mr-3">تاریخ ثبت نظر : {{str_replace('-','/',str_replace('00:00:00', '', $v->created_at))}}</span>
                 </div>
-                {{-- @endforeach --}}
+                @endforeach
               </div>
             </div>
 

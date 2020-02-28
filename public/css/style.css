@@ -6490,3 +6490,10 @@ display: inline-flex!important;
 }
 
 
+.avatarwh{
+    width: 80px;
+    height: 80px;
+}
+.text__tarikh{
+    color: #ccc!important;
+}

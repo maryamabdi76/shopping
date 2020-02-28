@@ -1,5 +1,8 @@
 <?php
 use Illuminate\Support\Facades\Route;
+use App\Models\Kala;
+use App\Models\Images;
+use App\Models\Tags;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -90,3 +93,35 @@ Route::get('/factor', ['as'=>'factor.factor','uses'=>'FactorController@factor'])
 Route::get('/transaction', ['as'=>'transaction.transaction','uses'=>'TransactionController@transaction']);
 
 Route::get('/thank', ['as'=>'transaction.thank','uses'=>'TransactionController@thank']);
+
+
+Route::get('/kala/{id}/tags',function($id){
+    $kala=Kala::findOrFail($id);
+    echo 'kala is : '.$kala->name .'<br>tag is:';
+    $tags=$kala->Tags;
+    foreach($tags as $tag){
+        echo $tag->name."<br>";
+    }
+});
+
+Route::get('/clothesproduct/tags/{id}', 'ProductController@filterTag')->name('filterTag');
+Route::get('/clothesproduct/category/{id}', 'ProductController@filterCategory')->name('filterCategory');
+
+Route::get('/posts/{id}/photos',function($id){
+    $posts=Kala::all();
+    foreach($posts as $post){
+        $photos=$post->images()->get();
+        foreach($photos as $photo){
+            echo  $post->name."<br>";
+           echo  $photo->path."<br>";
+        }
+    }
+});
+
+Route::get('/photos/{id}/belongto',function($id){
+
+    $photo=Images::findOrFail($id);
+   return $image=$photo->imageable()->get();
+
+
+});

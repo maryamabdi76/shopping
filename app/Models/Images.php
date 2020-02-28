@@ -6,8 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Images extends Model
 {
-    public function Kala()
+    protected $fillable=[
+        'path','imageable_id','imageable_type'
+    ];
+    public function Imageable()
     {
-        return $this->belongsTo('App\Models\Kala');
+        return $this->morphTo();
     }
 }

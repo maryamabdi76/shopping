@@ -15,11 +15,11 @@
                         <i class="caret"></i>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="/digitalproduct" class="dropdown-item">کالای دیجیتال</a></li>
-                        <li><a href="#" class="dropdown-item">آرایشی و بهداشتی</a></li>
+                        {{-- <li><a href="/digitalproduct" class="dropdown-item">کالای دیجیتال</a></li>
+                        <li><a href="#" class="dropdown-item">آرایشی و بهداشتی</a></li> --}}
                         <li><a href="/clothesproduct" class="dropdown-item">مد و پوشاک</a></li>
-                        <li><a href="#" class="dropdown-item">خانه و آشپزخانه</a></li>
-                        <li><a href="#" class="dropdown-item">ورزش</a></li>
+                        {{-- <li><a href="#" class="dropdown-item">خانه و آشپزخانه</a></li>
+                        <li><a href="#" class="dropdown-item">ورزش</a></li> --}}
                     </ul>
                 </li>
                 <li class="nav-item dropdown">

@@ -29,6 +29,6 @@ class Roles
                 return redirect()->route('profile');
                 // return $next($request);
             }
-        // return $next($request);
+        return redirect()->route('profile');
     }
 }

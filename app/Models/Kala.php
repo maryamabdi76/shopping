@@ -8,6 +8,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Kala extends Model
 {
     public $table="kala";
+    protected $fillable=[
+        'name','description','price','categoryid','num'
+    ];
     // public $timestamps=false;
     use SoftDeletes;
     protected $date = ["deleted_at"];
@@ -19,10 +22,7 @@ class Kala extends Model
     {
         return $this->hasOne('App\Models\Sail');
     }
-    public function Images()
-    {
-        return $this->hasMany('App\Models\Images');
-    }
+
     public function Review()
     {
         return $this->hasMany('App\Models\Review','id','kalaid');
@@ -30,5 +30,15 @@ class Kala extends Model
     public function Factor()
     {
         return $this->belongsToMany('App\Models\Factor', 'FactorKala', 'kalaid', 'factorid');
+    }
+
+    public function Images()
+    {
+        return $this->morphMany("App\Models\Images","imageable");
+    }
+
+    public function Tags()
+    {
+        return $this->morphtoMany("App\Models\Tags","taggable");
     }
 }

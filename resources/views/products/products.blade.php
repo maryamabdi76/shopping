@@ -43,9 +43,12 @@
                     </div>
                     <div class="widgets_inner">
                       <ul class="list">
+                        <li class="{{ ($catid==0) ? 'active' : ''}}">
+                            <a href="/clothesproduct/category/0">همه</a>
+                          </li>
                       @foreach($category as $v)
-                        <li class="">
-                          <a href="#">{{$v->categoryname}}</a>
+                        <li class="{{ ($v->id == $catid) ? 'active' : ''}}">
+                          <a href="/clothesproduct/category/{{$v->id}}">{{$v->categoryname}}</a>
                         </li>
                         @endforeach
                       </ul>
@@ -54,30 +57,23 @@
 
                   <aside class="left_widgets p_filter_widgets">
                     <div class="l_w_title">
-                      <h3>برند</h3>
+                      <h3>تگ ها</h3>
                     </div>
                     <div class="widgets_inner">
                       <ul class="list">
-                        <li>
-                          <a href="#">Apple</a>
+                        <li class="{{ ($tagid==0) ? 'active' : ''}}">
+                            <a href="/clothesproduct/tags/0">همه</a>
+                          </li>
+                        @foreach($tag as $v)
+                        <li class="{{ ($v->id ==$tagid) ? 'active' : ''}}">
+                        <a href="/clothesproduct/tags/{{$v->id}}">{{$v->name}}</a>
                         </li>
-                        <li>
-                          <a href="#">Asus</a>
-                        </li>
-                        <li class="active">
-                          <a href="#">Gionee</a>
-                        </li>
-                        <li>
-                          <a href="#">Micromax</a>
-                        </li>
-                        <li>
-                          <a href="#">Samsung</a>
-                        </li>
+                        @endforeach
                       </ul>
                     </div>
                   </aside>
 
-                  <aside class="left_widgets p_filter_widgets">
+                  {{-- <aside class="left_widgets p_filter_widgets">
                     <div class="l_w_title">
                       <h3>رنگ</h3>
                     </div>
@@ -100,9 +96,9 @@
                         </li>
                       </ul>
                     </div>
-                  </aside>
+                  </aside> --}}
 
-                  <aside class="left_widgets p_filter_widgets">
+                  {{-- <aside class="left_widgets p_filter_widgets">
                     <div class="l_w_title">
                       <h3>قیمت</h3>
                     </div>
@@ -110,12 +106,11 @@
                       <div class="range_item">
                         <div id="slider-range"></div>
                         <div class="">
-                          {{-- <label for="amount">قیمت : </label> --}}
                           <input type="text" id="amount" readonly />
                         </div>
                       </div>
                     </div>
-                  </aside>
+                  </aside> --}}
                 </div>
               </div>
 
@@ -138,7 +133,10 @@
                   <div class="col-lg-3 col-sm-4 col-6">
                     <div class="single-product">
                         <div class="product-img">
-                          <img class="img-fluid w-100" src="images/product/inspired-product/i1.jpg" alt="" />
+                            @foreach($photos as $photo)
+                            {{dd($photo)}}
+                                <img class="img-fluid w-100" src="{{asset('$photo[path]')}}" alt="" />
+                             @endforeach
                           <div class="p_icon">
                             <a href="/productinfo/{{$v->id}}">
                               <i class="fa fa-eye"></i>
@@ -174,5 +172,5 @@
         </div>
       </section>
       <!--================End Category Product Area =================-->
-      
+
 @endsection
