@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 19, 2020 at 02:16 PM
+-- Generation Time: Feb 28, 2020 at 08:03 PM
 -- Server version: 10.3.16-MariaDB
 -- PHP Version: 7.3.7
 
@@ -139,16 +139,24 @@ INSERT INTO `gender` (`id`, `name`) VALUES
 
 CREATE TABLE `images` (
   `id` int(11) NOT NULL,
-  `imagename` varchar(100) COLLATE utf8_bin NOT NULL,
-  `kalaid` int(11) NOT NULL
+  `imageable_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `imageable_type` varchar(100) COLLATE utf8_bin DEFAULT NULL,
+  `path` varchar(100) COLLATE utf8_bin DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Dumping data for table `images`
 --
 
-INSERT INTO `images` (`id`, `imagename`, `kalaid`) VALUES
-(1, 'jolo.jpg', 1);
+INSERT INTO `images` (`id`, `imageable_id`, `imageable_type`, `path`, `created_at`, `updated_at`) VALUES
+(2, 1, 'App\\Models\\Kala', 'images\\kala\\i1-1.jpg', '2020-02-27 08:15:47', '2020-02-28 18:31:02'),
+(3, 5, 'App\\Models\\Kala', 'images\\kala\\i4.jpg', '2020-02-27 15:32:55', '2020-02-27 15:32:55'),
+(4, 4, 'App\\Models\\Kala', 'images\\kala\\i2.jpg', '2020-02-28 17:32:10', '2020-02-28 17:32:10'),
+(5, 3, 'App\\Models\\Kala', 'images\\kala\\i5.jpg', '2020-02-28 17:36:05', '2020-02-28 17:36:05'),
+(9, 1, 'App\\Models\\Kala', 'images\\kala\\i1-2.jpg', '2020-02-28 18:38:03', '2020-02-28 18:38:03'),
+(10, 1, 'App\\Models\\Kala', 'images\\kala\\i1-3.jpg', '2020-02-28 18:51:43', '2020-02-28 18:52:03');
 
 -- --------------------------------------------------------
 
@@ -174,8 +182,8 @@ CREATE TABLE `kala` (
 
 INSERT INTO `kala` (`id`, `name`, `description`, `categoryid`, `price`, `num`, `created_at`, `updated_at`, `deleted_at`) VALUES
 (1, 'شکوفه', 'نخی \r\nتابستانه\r\nآبی\r\nدکمه دار', 1, '200000', 5, '2020-01-22', '2020-01-22', NULL),
-(3, 'پرلون', 'چرم\r\nاناری روشن', 7, '600000', 10, '2020-01-15', '2020-01-15', NULL),
-(4, 'مرجان', 'مرجان', 4, '11000', 10, '2020-02-18', '2020-02-18', NULL),
+(3, 'پرلون', 'چرم\r\nقرمز روشن', 7, '600000', 10, '2020-01-15', '2020-01-15', NULL),
+(4, 'مرجان', 'چهارخونه\r\nپشمی', 4, '11000', 10, '2020-02-18', '2020-02-28', NULL),
 (5, 'نرگس', 'جنس چرم', 8, '250000', 10, '2020-02-18', '2020-02-18', NULL);
 
 -- --------------------------------------------------------
@@ -235,7 +243,7 @@ CREATE TABLE `review` (
 --
 
 INSERT INTO `review` (`id`, `userid`, `kalaid`, `rating`, `comment`, `liked`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 1, 4, 3, 'محصول خوبی بود', 0, '2020-02-17', '2020-02-18', NULL),
+(1, 1, 4, 3, 'محصول خوبی بود!', 0, '2020-02-17', '2020-02-20', NULL),
 (2, 7, 3, 4, 'راضی بودم', 1, '2020-02-18', '2020-02-18', NULL),
 (3, 1, 1, 5, 'بسیار عالی', 0, '2020-02-18', '2020-02-18', NULL);
 
@@ -284,6 +292,52 @@ CREATE TABLE `support` (
   `answer` text COLLATE utf8_bin DEFAULT NULL,
   `userida` bigint(20) UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `taggables`
+--
+
+CREATE TABLE `taggables` (
+  `id` int(11) NOT NULL,
+  `tags_id` int(11) NOT NULL,
+  `taggable_id` int(11) DEFAULT NULL,
+  `taggable_type` varchar(250) COLLATE utf8_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `taggables`
+--
+
+INSERT INTO `taggables` (`id`, `tags_id`, `taggable_id`, `taggable_type`) VALUES
+(1, 1, 3, 'App\\Models\\Kala'),
+(2, 1, 5, 'App\\Models\\Kala'),
+(3, 4, 3, 'App\\Models\\Kala'),
+(4, 2, 1, 'App\\Models\\Kala');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tags`
+--
+
+CREATE TABLE `tags` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `tags`
+--
+
+INSERT INTO `tags` (`id`, `name`, `created_at`, `updated_at`) VALUES
+(1, 'چرم', '2020-02-27 08:25:37', '2020-02-27 08:25:37'),
+(2, 'نخی', '2020-02-27 08:25:46', '2020-02-27 08:25:46'),
+(3, 'بهاره', '2020-02-27 08:25:55', '2020-02-27 08:25:55'),
+(4, 'قرمز', '2020-02-27 08:51:45', '2020-02-27 08:51:45');
 
 -- --------------------------------------------------------
 
@@ -492,8 +546,8 @@ INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `re
 (114, 'Prof. Lily Murray III', 'qmohr@example.com', '2020-01-09 02:39:17', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'EaVAA0iu06', '2020-01-09 02:39:23', '2020-01-09 02:39:23', 1, 'default', '9912013220'),
 (115, 'Dr. Payton Veum', 'anabel73@example.org', '2020-01-09 02:39:17', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'Sg8eLYfFYv', '2020-01-09 02:39:23', '2020-01-09 02:39:23', 1, 'default', '9912013220'),
 (116, 'Rebecca Larkin', 'wolff.ethelyn@example.org', '2020-01-09 02:39:17', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'uLuziYXZKH', '2020-01-09 02:39:23', '2020-01-09 02:39:23', 1, 'default', '9912013220'),
-(117, 'Justen VonRueden', 'taryn.nikolaus@example.com', '2020-01-09 02:39:17', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'IWHzTMiL6y', '2020-01-09 02:39:23', '2020-01-09 02:39:23', 1, 'default', '9912013220'),
-(118, 'Maryam Abdi Vazvani', 'maryamvazvani@yahoo.com', NULL, '$2y$10$wV1A1N418hRgU51yLyBko.kZaaTuVyxgZVZcf4XARoxlb/6AtE5fC', NULL, '2020-02-19 03:49:50', '2020-02-19 09:39:40', 1, 'Mari', '09912013220');
+(118, 'Maryam Abdi Vazvani', 'maryamvazvani@yahoo.com', NULL, '$2y$10$wV1A1N418hRgU51yLyBko.kZaaTuVyxgZVZcf4XARoxlb/6AtE5fC', NULL, '2020-02-19 03:49:50', '2020-02-19 09:39:40', 1, 'Mari', '09912013220'),
+(119, 'Maryam2', 'maryamvazvani2@yahoo.com', NULL, '$2y$10$HNk36st78oDO1bJZ/bqTsuYPqhdwxiKn3WGNydSb79qV1JmUWHhpa', NULL, '2020-02-21 01:34:50', '2020-02-21 01:34:50', 1, 'maryam2', '09912013220');
 
 -- --------------------------------------------------------
 
@@ -563,8 +617,8 @@ ALTER TABLE `gender`
 --
 ALTER TABLE `images`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `idx_images` (`imagename`),
-  ADD KEY `fk_images_kala` (`kalaid`);
+  ADD KEY `fk_images_kala` (`imageable_type`),
+  ADD KEY `idx_images` (`imageable_id`) USING BTREE;
 
 --
 -- Indexes for table `kala`
@@ -612,6 +666,18 @@ ALTER TABLE `support`
   ADD PRIMARY KEY (`id`),
   ADD KEY `fk_support_users` (`useridq`),
   ADD KEY `fk_support_users_0` (`userida`);
+
+--
+-- Indexes for table `taggables`
+--
+ALTER TABLE `taggables`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tags`
+--
+ALTER TABLE `tags`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `transaction`
@@ -701,7 +767,7 @@ ALTER TABLE `gender`
 -- AUTO_INCREMENT for table `images`
 --
 ALTER TABLE `images`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `kala`
@@ -734,6 +800,18 @@ ALTER TABLE `support`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `taggables`
+--
+ALTER TABLE `taggables`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `tags`
+--
+ALTER TABLE `tags`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT for table `transaction`
 --
 ALTER TABLE `transaction`
@@ -755,7 +833,7 @@ ALTER TABLE `trantype`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=119;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=120;
 
 --
 -- AUTO_INCREMENT for table `wallet`
@@ -788,12 +866,6 @@ ALTER TABLE `factor`
 ALTER TABLE `factorkala`
   ADD CONSTRAINT `fk_factorkala_factor` FOREIGN KEY (`factorid`) REFERENCES `factor` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `fk_factorkala_kala` FOREIGN KEY (`kalaid`) REFERENCES `kala` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `images`
---
-ALTER TABLE `images`
-  ADD CONSTRAINT `fk_images_kala` FOREIGN KEY (`kalaid`) REFERENCES `kala` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `kala`
