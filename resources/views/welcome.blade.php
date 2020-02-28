@@ -83,7 +83,7 @@
         @foreach($product as $v)
         <div class="single-product item">
             <div class="product-img">
-              <img class="img-fluid w-100" src="images/product/inspired-product/i1.jpg" alt="" />
+              <img class="img-fluid w-100" src="{{asset('/').$v->Images()->get()->first()->path}}" alt="" />
               <div class="p_icon">
                 <a href="/productinfo/{{$v->id}}">
                   <i class="fa fa-eye"></i>
@@ -129,7 +129,7 @@
         <div class="col-md-3 col-6 mb-20">
           <div class="single-product item">
             <div class="product-img">
-              <img class="img-fluid w-100" src="images/product/inspired-product/i1.jpg" alt="" />
+              <img class="img-fluid w-100" src="{{asset('/').$v->Images()->get()->first()->path}}" alt="" />
               <div class="p_icon">
                 <a href="#">
                   <i class="fa fa-eye"></i>
@@ -174,7 +174,7 @@
         @foreach($product as $v)
         <div class="single-product item">
             <div class="product-img">
-              <img class="img-fluid w-100" src="images/product/inspired-product/i1.jpg" alt="" />
+              <img class="img-fluid w-100" src="{{asset('/').$v->Images()->get()->first()->path}}" alt="" />
               <div class="p_icon">
                 <a href="/productinfo/{{$v->id}}">
                   <i class="fa fa-eye"></i>

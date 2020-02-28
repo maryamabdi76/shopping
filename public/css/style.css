@@ -533,9 +533,10 @@ nav{
   .single-product .product-img {
     position: relative;
     overflow: hidden;
-    /* border: 1px solid #8e44ad; */
-  }
-  .single-product .product-img img{
+    border: 1px solid #f0f2f1;
+}
+.single-product .product-img img{
+    height: 230px;
     width: 100%;
   }
   .single-product .product-img .p_icon {

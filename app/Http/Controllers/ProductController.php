@@ -18,18 +18,11 @@ class ProductController extends Controller
     }
     public function product()
     {
-        $product = Kala::with('Category');
-        dd($product);
-        $photo =Kala::findOrFail($product->id)->Images()->get();
-        dd($photo);
-        // foreach ($product as $p) {
-        //     $photos[] = $p->Images()->get();
-        // }
+        $product = Kala::with('Category')->get();
         $data = array(
             'category' => Category::all(),
             'tag' => Tags::all(),
             'product' => $product,
-            'photos'=>$photos,
             'catid' => 0,
             'tagid' => 0,
         );
@@ -45,7 +38,6 @@ class ProductController extends Controller
             'product' => $product,
             'reviews' => $reviews
         );
-
         return view('products/productinfo')->with($data);
     }
 

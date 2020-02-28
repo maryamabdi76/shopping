@@ -130,13 +130,11 @@
                 <div class="row">
 
                 @foreach($product as $v)
+                {{-- {{dd($v->Images()->get())}} --}}
                   <div class="col-lg-3 col-sm-4 col-6">
                     <div class="single-product">
                         <div class="product-img">
-                            @foreach($photos as $photo)
-                            {{dd($photo)}}
-                                <img class="img-fluid w-100" src="{{asset('$photo[path]')}}" alt="" />
-                             @endforeach
+                            <img class="img-fluid w-100" src="{{asset('/').$v->Images()->get()->first()->path}}" alt="" />
                           <div class="p_icon">
                             <a href="/productinfo/{{$v->id}}">
                               <i class="fa fa-eye"></i>
