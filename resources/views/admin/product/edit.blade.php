@@ -32,7 +32,7 @@
                 <div class="card-header">{{ __('ویرایش محصول') }}</div>
 
                 <div class="card-body">
-                <form method="POST" action="/updateProduct">
+                <form method="POST" action="/updateProduct" enctype="multipart/form-data">
                         @csrf
                         <input id="id" type="hidden" class="form-control " name="id" value="{{ $product->id}}" >
 
@@ -51,12 +51,28 @@
                         </div>
 
                         <div class="form-group row">
+                            <label for="" class="col-md-4 col-form-label text-md-left">{{ __('عکس های محصول') }}</label>
+                            <div class="col-md-6">
+                                @foreach($product->Images()->get() as $k=>$photo)
+                                <img class="img-fluid" src="{{asset('/').$photo->path}}" width="32%" alt=""/>
+                            @endforeach
+                            </div>
+                            <label for="imagefile" class="col-md-4 col-form-label text-md-left">{{ __('عکس جدید') }}</label>
+                            <div class="col-md-6">
+                                <input id="imagefile" type="file" class="form-control @error('imagefile') is-invalid @enderror" name="imagefile[]" required accept="image/*" multiple>
+                                @error('imagefile[]')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
                             <label for="description" class="col-md-4 col-form-label text-md-left">{{ __('توضیحات') }}</label>
 
                             <div class="col-md-6">
-                                <textarea id="description" rows="8" class="form-control @error('description') is-invalid @enderror" name="description" required autocomplete="description" autofocus>
-                                    {{ $product->description}}
-                                </textarea>
+                                <textarea id="description" rows="8" class="form-control @error('description') is-invalid @enderror" name="description" required autocomplete="description" autofocus>{{ $product->description}}</textarea>
                                 @error('description')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

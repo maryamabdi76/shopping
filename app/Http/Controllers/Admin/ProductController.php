@@ -9,6 +9,7 @@ use App\Models\Category;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+use Carbon\Carbon;
 class ProductController extends Controller
 {
     public function __construct(){
@@ -60,7 +61,13 @@ class ProductController extends Controller
         $form->categoryid=$request->post('categoryid');
         $form->price=$request->post('price');
         $form->num=$request->post('num');
+        $files=$request->file('imagefile');
         $form->save();
+        foreach($files as $file){
+            $imagename=$file->getClientOriginalName();
+            $file->move('images/kala/',$imagename);
+            $form->Images()->create(['path'=>'images/kala/'.$imagename ,'imageable_id'=>$form->id]);
+        }
         return redirect('admin/product');
 
     }
@@ -109,7 +116,13 @@ class ProductController extends Controller
         $form->categoryid=$request->post('categoryid');
         $form->price=$request->post('price');
         $form->num=$request->post('num');
+        $files=$request->file('imagefile');
         $form->save();
+        foreach($files as $file){
+            $imagename=$file->getClientOriginalName();
+            $file->move('images/kala/',$imagename);
+            $form->Images()->update(['path'=>'images/kala/'.$imagename ,'imageable_id'=>$form->id]);
+        }
         return redirect('admin/product');
     }
 

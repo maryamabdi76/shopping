@@ -13,15 +13,6 @@
                         <img src="{{asset('/').$photo->path}}" width="60px" height="60px" alt=""/>
                     </li>
                     @endforeach
-                    {{-- <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active">
-                    <img src="{{asset('images/product/single-product/s-product-s-2.jpg')}}" width="50px" alt=""/>
-                    </li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="1">
-                    <img src="{{asset('images/product/single-product/s-product-s-3.jpg')}}" width="50px" alt="" />
-                    </li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="2" >
-                    <img src="{{asset('images/product/single-product/s-product-s-4.jpg')}}" width="50px" alt="" />
-                    </li> --}}
                 </ol>
               <div class="carousel-inner ">
                 @foreach($product->Images()->get() as $k=>$photo)
@@ -29,15 +20,6 @@
                     <img class="d-block w-100" src="{{asset('/').$photo->path}}" alt="" />
                 </div>
                 @endforeach
-                {{-- <div class="carousel-item active">
-                  <img class="d-block w-100" src="{{asset('/').$product->Images()->get()}}" alt="First slide" />
-                </div>
-                <div class="carousel-item">
-                  <img class="d-block w-100" src="{{asset('images/product/single-product/s-product-1.jpg')}}" alt="Second slide"/>
-                </div>
-                <div class="carousel-item">
-                  <img class="d-block w-100" src="{{asset('images/product/single-product/s-product-1.jpg')}}" alt="Third slide" />
-                </div> --}}
               </div>
             </div>
           </div>
@@ -52,8 +34,8 @@
                 <a class="active" href="/clothesproduct/category/{{$product->category->id}}"> <span>دسته بندی</span>: {{$product->category->categoryname}}</a>
               </li>
             </ul>
-            <p>
-                لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد.
+            <p style="white-space: pre">
+                {{-- {{$product->description}} --}}
             </p>
 
             <div class="pmbtns " style="margin:0 10px 40px 0">
@@ -87,31 +69,24 @@
     <div class="container">
       <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item">
-          <a class="nav-link" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="false">
+          <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">
               توضیحات
           </a>
         </li>
-        <li class="nav-item">
+        {{-- <li class="nav-item">
           <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">
               مشخصات
           </a>
-        </li>
+        </li> --}}
         <li class="nav-item">
-          <a class="nav-link active" id="review-tab" data-toggle="tab" href="#review" role="tab" aria-controls="review" aria-selected="true">
+          <a class="nav-link" id="review-tab" data-toggle="tab" href="#review" role="tab" aria-controls="review" aria-selected="false">
               نظر
           </a>
         </li>
       </ul>
       <div class="tab-content" id="myTabContent">
-        <div class="tab-pane " id="home" role="tabpanel" aria-labelledby="home-tab" >
-          <p>
-            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد و زمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.
-
-          </p>
-          <p>
-           لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد.
-
-          </p>
+        <div class="tab-pane active " id="home" role="tabpanel" aria-labelledby="home-tab" >
+            <p style="white-space: pre">{{$product->description}}</p>
         </div>
         <div class="tab-pane " id="profile" role="tabpanel" aria-labelledby="profile-tab" >
           <div class="table-responsive">
@@ -154,7 +129,7 @@
           </div>
         </div>
 
-        <div class="tab-pane  active " style="opacity:initial" id="review" role="tabpanel" aria-labelledby="review-tab" >
+        <div class="tab-pane" style="opacity:initial" id="review" role="tabpanel" aria-labelledby="review-tab" >
           <div class="row">
             <button class="submit_btn" id="review-btn">  نظر جدید  <i class="fa fa-comment"></i></button>
             <div class="col-lg-12 " id="review-content">

@@ -40,18 +40,20 @@
                                     <thead>
                                         {{-- <th><input type="checkbox" class="checkthis" /></th> --}}
                                         <th>آیدی</th>
+                                        <th>عکس</th>
                                         <th>نام</th>
                                         <th>توضیحات</th>
                                         <th>دسته بندی</th>
                                         <th>قیمت</th>
                                         <th>تعداد</th>
-                                        <th> </th>
+                                        <th style="width:80px"> </th>
                                     </thead>
                                     <tbody>
                                         @foreach($product as $k=>$v)
                                         <tr>
                                         {{-- <td><input type="checkbox" class="checkthis" /></td> --}}
                                         <td>{{$v->id}}</td>
+                                        <td><img class="img-fluid w-100" src="{{asset('/').$v->Images()->get()->first()->path}}" alt="" /></td>
                                         <td>{{$v->name}}</td>
                                         <td>{{$v->description}}</td>
                                         <td>{{$v->category->categoryname}}</td>

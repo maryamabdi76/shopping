@@ -32,7 +32,7 @@
                 <div class="card-header">{{ __('اضافه کردن محصول') }}</div>
 
                 <div class="card-body">
-                <form method="POST" action="/createProduct">
+                <form method="POST" action="/createProduct" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-left">{{ __('نام') }}</label>
@@ -49,12 +49,22 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="description" class="col-md-4 col-form-label text-md-left">{{ __('توضیحات') }}</label>
+                            <label for="imagefile" class="col-md-4 col-form-label text-md-left">{{ __('عکس') }}</label>
 
                             <div class="col-md-6">
-                                <textarea id="description" rows="8" class="form-control @error('description') is-invalid @enderror" name="description" required autocomplete="description" autofocus>
+                                <input id="imagefile" type="file" class="form-control @error('imagefile') is-invalid @enderror" name="imagefile[]" required accept="image/*" multiple>
+                                @error('imagefile[]')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
 
-                                </textarea>
+                        <div class="form-group row">
+                            <label for="description" class="col-md-4 col-form-label text-md-left">{{ __('توضیحات') }}</label>
+                            <div class="col-md-6">
+                                <textarea id="description" rows="8" class="form-control @error('description') is-invalid @enderror" name="description" required></textarea>
                                 @error('description')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -125,3 +135,27 @@
 </div>
 </section>
 @endsection
+
+<script>
+$(document).ready(function(){
+    $('form').ajaxForm({
+        beforeSend():function(){
+            $(#success).empty();
+            $('.progress-bar').text('0%');
+            $('.progress-bar').css('width','0%');
+        },
+        uploadProgress:function(event,position,total,percentComplete){
+            $('.progress-bar').text(percentComplete +'0%');
+            $('.progress-bar').css('width',percentComplete +'0%');
+        },
+        success:function(data){
+            if(data.success){
+                ('#success').html('<div class="text-success text-center"><b>'+data.success+'</b></div><br>');
+                ('#success').append(data.image);
+                $('.progress-bar').text('uploaded');
+                $('.progress-bar').css('width','100');
+            }
+        }
+    })
+});
+</script>

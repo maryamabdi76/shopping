@@ -150,7 +150,7 @@
                         <div class="product-btm">
                           <a href="#" class="d-block">
                             <h4>{{$v->category->categoryname}} {{$v->name}}</h4>
-                            <h6>{{$v->description}}</h6>
+                            {{-- <h6>{{$v->description}}</h6> --}}
                           </a>
                           <div class="mt-3">
                               {{-- <del>350.000</del> --}}

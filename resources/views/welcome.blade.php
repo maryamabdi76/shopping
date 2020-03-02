@@ -131,7 +131,7 @@
             <div class="product-img">
               <img class="img-fluid w-100" src="{{asset('/').$v->Images()->get()->first()->path}}" alt="" />
               <div class="p_icon">
-                <a href="#">
+                <a href="/productinfo/{{$v->id}}">
                   <i class="fa fa-eye"></i>
                 </a>
                 <a href="#">

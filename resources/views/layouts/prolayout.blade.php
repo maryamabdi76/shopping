@@ -5,7 +5,7 @@
     </head>
 
     <body>
-        @include('layouts.propartials.nav')
+        @include('layouts.partials.nav')
         @include('layouts.propartials.header')
         @include('layouts.propartials.sidebar')
         @yield('content')
