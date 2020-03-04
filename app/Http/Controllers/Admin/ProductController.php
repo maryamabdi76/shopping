@@ -5,14 +5,17 @@ namespace App\Http\Controllers\Admin;
 // use App\User;
 // use App\Models\Users;
 use App\Models\Kala;
+use App\Models\Images;
 use App\Models\Category;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use Carbon\Carbon;
+
 class ProductController extends Controller
 {
-    public function __construct(){
+    public function __construct()
+    {
         $this->middleware('auth');
     }
     /**
@@ -22,8 +25,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $product=Kala::with('Category')->get();
-        return view('admin.product.index')->with('product',$product);
+        $product = Kala::with('Category')->get();
+        return view('admin.product.index')->with('product', $product);
     }
 
 
@@ -34,8 +37,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $data=array(
-            'cat'=>Category::all()
+        $data = array(
+            'cat' => Category::all()
         );
         return view('admin.product.add')->with($data);
     }
@@ -49,27 +52,26 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name'=>'required|string|max:255',
-            'description'=>'required|string|max:255',
+            'name' => 'required|string|max:255',
+            'description' => 'required|string|max:255',
             // 'categoryid'=>'required|numeric|max:255',
-            'price'=>'required|numeric',
-            'num'=>'required|numeric|max:255',
+            'price' => 'required|numeric',
+            'num' => 'required|numeric|max:255',
         ]);
-        $form=new Kala();
-        $form->name=$request->post('name');
-        $form->description=$request->post('description');
-        $form->categoryid=$request->post('categoryid');
-        $form->price=$request->post('price');
-        $form->num=$request->post('num');
-        $files=$request->file('imagefile');
+        $form = new Kala();
+        $form->name = $request->post('name');
+        $form->description = $request->post('description');
+        $form->categoryid = $request->post('categoryid');
+        $form->price = $request->post('price');
+        $form->num = $request->post('num');
+        $files = $request->file('imagefile');
         $form->save();
-        foreach($files as $file){
-            $imagename=$file->getClientOriginalName();
-            $file->move('images/kala/',$imagename);
-            $form->Images()->create(['path'=>'images/kala/'.$imagename ,'imageable_id'=>$form->id]);
+        foreach ($files as $file) {
+            $imagename = $file->getClientOriginalName();
+            $file->move('images/kala/', $imagename);
+            $form->Images()->create(['path' => 'images/kala/' . $imagename, 'imageable_id' => $form->id]);
         }
         return redirect('admin/product');
-
     }
 
 
@@ -92,9 +94,9 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        $data=array(
-            'product'=>Kala::find($id),
-            'cat'=>Category::all()
+        $data = array(
+            'product' => Kala::find($id),
+            'cat' => Category::all()
         );
         return view('admin.product.edit')->with($data);
     }
@@ -109,23 +111,39 @@ class ProductController extends Controller
     public function update(Request $request)
     {
         // dd($request->id);
-        $id=$request->id;
-        $form=Kala::find($id);
-        $form->name=$request->post('name');
-        $form->description=$request->post('description');
-        $form->categoryid=$request->post('categoryid');
-        $form->price=$request->post('price');
-        $form->num=$request->post('num');
-        $files=$request->file('imagefile');
+        $id = $request->id;
+        $form = Kala::find($id);
+        $form->name = $request->post('name');
+        $form->description = $request->post('description');
+        $form->categoryid = $request->post('categoryid');
+        $form->price = $request->post('price');
+        $form->num = $request->post('num');
         $form->save();
-        foreach($files as $file){
-            $imagename=$file->getClientOriginalName();
-            $file->move('images/kala/',$imagename);
-            $form->Images()->update(['path'=>'images/kala/'.$imagename ,'imageable_id'=>$form->id]);
-        }
+        $photoid=$request->post('photoid');
+        $files = $request->file('imagefile');
+        $filesupdate = $request->file('file');
+        if ($filesupdate)
+        foreach ($filesupdate as $k=>$file) {
+            // dd($photoid[$k]);
+                $imagename = $file->getClientOriginalName();
+                $file->move('images/kala/', $imagename);
+                Images::where('id',$photoid[$k])->update(['path' => 'images/kala/' . $imagename, 'imageable_id' => $form->id]);
+            }
+        if ($files)
+            foreach ($files as $file) {
+                $imagename = $file->getClientOriginalName();
+                $file->move('images/kala/', $imagename);
+                $form->Images()->create(['path' => 'images/kala/' . $imagename, 'imageable_id' => $form->id]);
+            }
         return redirect('admin/product');
     }
 
+    public function deletePhoto($id, $pid)
+    {
+        $image = Images::find($id);
+        $image->delete();
+        return redirect("editProduct/$pid");
+    }
     /**
      * Remove the specified resource from storage.
      *

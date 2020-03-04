@@ -55,11 +55,18 @@
                             <div class="col-md-6">
                                 @foreach($product->Images()->get() as $k=>$photo)
                                 <img class="img-fluid" src="{{asset('/').$photo->path}}" width="32%" alt=""/>
-                            @endforeach
+                                    <input type="hidden" name="photoid[]" value="{{$photo->id}}">
+                                    <input name="file[{{$k}}]" type="file" style="z-index: 999; opacity: 0; width:22px; height:24px; position: relative;top:2px; right:26px;">
+                                    <a class="btn btn-info btn-xs fa fa-edit text-white"></a>
+                                    <a href="/deletePhoto/{{$photo->id}}/{{$product->id}}" class="btn btn-danger btn-xs" data-toggle="tooltip" title="Delete" onclick="return confirm('Are you sure you want to delete this item?');" >
+                                    <span class="fa fa-trash"></span>
+                                </a>
+                                {{-- <br> --}}
+                                @endforeach
                             </div>
-                            <label for="imagefile" class="col-md-4 col-form-label text-md-left">{{ __('عکس جدید') }}</label>
+                            <label for="imagefile" class="col-md-4 col-form-label text-md-left">{{ __('اضافه کردن عکس جدید') }}</label>
                             <div class="col-md-6">
-                                <input id="imagefile" type="file" class="form-control @error('imagefile') is-invalid @enderror" name="imagefile[]" required accept="image/*" multiple>
+                                <input id="imagefile" type="file" class="form-control @error('imagefile') is-invalid @enderror" name="imagefile[]" accept="image/*" multiple>
                                 @error('imagefile[]')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

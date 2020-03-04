@@ -56,6 +56,8 @@ Route::get('/editReview/{id}', 'Admin\ReviewController@edit')->middleware('Role'
 Route::post('/updateReview', 'Admin\ReviewController@update')->middleware('Role');
 Route::get('/deleteReview/{id}', 'Admin\ReviewController@destroy')->middleware('Role');
 
+Route::get('/deletePhoto/{id}/{pid}', 'Admin\ProductController@deletePhoto')->middleware('Role');
+
 
 Route::get('/all', ['as'=>'all','uses'=>'SiteController@getall']);
 
@@ -94,34 +96,5 @@ Route::get('/transaction', ['as'=>'transaction.transaction','uses'=>'Transaction
 
 Route::get('/thank', ['as'=>'transaction.thank','uses'=>'TransactionController@thank']);
 
-
-Route::get('/kala/{id}/tags',function($id){
-    $kala=Kala::findOrFail($id);
-    echo 'kala is : '.$kala->name .'<br>tag is:';
-    $tags=$kala->Tags;
-    foreach($tags as $tag){
-        echo $tag->name."<br>";
-    }
-});
-
 Route::get('/clothesproduct/tags/{id}', 'ProductController@filterTag')->name('filterTag');
 Route::get('/clothesproduct/category/{id}', 'ProductController@filterCategory')->name('filterCategory');
-
-Route::get('/posts/{id}/photos',function($id){
-    $posts=Kala::all();
-    foreach($posts as $post){
-        $photos=$post->images()->get();
-        foreach($photos as $photo){
-            echo  $post->name."<br>";
-           echo  $photo->path."<br>";
-        }
-    }
-});
-
-Route::get('/photos/{id}/belongto',function($id){
-
-    $photo=Images::findOrFail($id);
-   return $image=$photo->imageable()->get();
-
-
-});

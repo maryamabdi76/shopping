@@ -9,7 +9,7 @@
             <div id="carouselExampleIndicators" class="carousel slide " data-ride="carousel">
                 <ol class="carousel-indicators">
                     @foreach($product->Images()->get() as $k=>$photo)
-                    <li data-target="#carouselExampleIndicators" data-slide-to="$k" class="{{ $k == 0 ? ' active' : '' }}">
+                    <li data-target="#carouselExampleIndicators" data-slide-to="{{$k}}" class="{{ $k == 0 ? ' active' : '' }}">
                         <img src="{{asset('/').$photo->path}}" width="60px" height="60px" alt=""/>
                     </li>
                     @endforeach

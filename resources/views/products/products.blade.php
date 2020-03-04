@@ -28,7 +28,7 @@
       <section class="cat_product_area section_gap_top mb-20">
 
         <div class="container-fluid">
-            <div class="row" style="width: 100%">
+            <div class="row" style="width: 100%;margin:initial">
             <div class="mb-20 " id="sidebar">
                 <div class="custom-menu">
                     <button type="button" id="sidebarCollapse" class="btn btn-primary">
@@ -75,31 +75,6 @@
 
                   {{-- <aside class="left_widgets p_filter_widgets">
                     <div class="l_w_title">
-                      <h3>رنگ</h3>
-                    </div>
-                    <div class="widgets_inner">
-                      <ul class="list">
-                        <li>
-                          <a href="#">مشکی</a>
-                        </li>
-                        <li>
-                          <a href="#">قرمز</a>
-                        </li>
-                        <li class="active">
-                          <a href="#">سبز</a>
-                        </li>
-                        <li>
-                          <a href="#">زرد</a>
-                        </li>
-                        <li>
-                          <a href="#">سفید</a>
-                        </li>
-                      </ul>
-                    </div>
-                  </aside> --}}
-
-                  {{-- <aside class="left_widgets p_filter_widgets">
-                    <div class="l_w_title">
                       <h3>قیمت</h3>
                     </div>
                     <div class="widgets_inner">
@@ -115,9 +90,9 @@
               </div>
 
 
-            <div class="mb-20 w-75" id="content">
+            <div class="mb-20 w-content" id="content">
                 <div class="product_top_bar">
-                    <div class="col-md-3" style="">
+                    <div class="col-md-4" style="">
                         <select id="" name="" class="" >
                             <option value="">مرتب سازی</option>
                             <option value="2">به ترتیب قیمت</option>

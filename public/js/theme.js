@@ -13,7 +13,7 @@
 
 	$('#sidebarCollapse').on('click', function () {
       $('#sidebar').toggleClass('active');
-      $('#content').toggleClass('w-75');
+      $('#content').toggleClass('w-content');
   });
 
 
