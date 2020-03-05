@@ -13,7 +13,8 @@ use DataTables;
 
 class UserController extends Controller
 {
-    public function __construct(){
+    public function __construct()
+    {
         $this->middleware('auth');
     }
     /**
@@ -23,13 +24,13 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users=Users::with('Role')->get();
-        return view('admin.users.index')->with('users',$users);
+        $users = Users::with('Role')->get();
+        return view('admin.users.index')->with('users', $users);
     }
 
     public function alluserdatatables()
     {
-        $users=User::all();
+        $users = User::all();
         return DataTables()->of($users)->make(true);
     }
 
@@ -73,10 +74,10 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $data=array(
-            'user'=>User::find($id),
-            'gender'=>Gender::all(),
-            'role'=>Role::all(),
+        $data = array(
+            'user' => User::find($id),
+            'gender' => Gender::all(),
+            'role' => Role::all(),
         );
         return view('admin.users.edit')->with($data);
     }
@@ -90,16 +91,17 @@ class UserController extends Controller
      */
     public function update(Request $request)
     {
-        // dd($request->id);
-        $id=$request->id;
-        $form=User::find($id);
-        $form->name=$request->post('name');
-        $form->username=$request->post('username');
-        $form->mobile=$request->post('mobile');
-        $form->email=$request->post('email');
-        $form->gender=$request->post('gender');
-        // $form->role=$request->post('role');
+        $id = $request->id;
+        $form = User::find($id);
+        $form->name = $request->post('name');
+        $form->username = $request->post('username');
+        $form->mobile = $request->post('mobile');
+        $form->email = $request->post('email');
+        $form->gender = $request->post('gender');
+        $role = $request->post('role');
+        $form->Role()->sync([$role]);
         $form->save();
+
         return redirect('admin/users');
     }
 
@@ -120,6 +122,6 @@ class UserController extends Controller
         return redirect('/admin/users');
 
         //    return Redirect::route('admin.users.index');
-    //    }
+        //    }
     }
 }

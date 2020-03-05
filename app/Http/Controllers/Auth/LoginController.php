@@ -39,21 +39,23 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
 
     }
-    protected function redirectto()
-    {
-        $id = auth()->user()->id;
-        $user=Users::find($id);
-        foreach($user->role as $role)
-        if($role->name=='Admin'){
-            $this->redirectTo='home';
-            return $this->redirectTo;
-        }elseif($role->name=='User'){
-            $this->redirectTo='profile';
-            return $this->redirectTo;
-        }
-        else{
-            $this->redirectTo='/profile';
-            return $this->redirectTo;
-        }
-    }
+    // protected function redirectto()
+    // {
+    //     $id = auth()->user()->id;
+    //     $user=Users::find($id);
+    //     foreach($user->role as $role)
+    //     if($role->name=='Admin'){
+    //         $this->redirectTo='home';
+    //         return $this->redirectTo;
+    //     }elseif($role->name=='User'){
+    //         $this->redirectTo='profile';
+    //         return $this->redirectTo;
+    //     }
+    //     abort(403);
+
+    //     // else{
+    //     //     $this->redirectTo='/profile';
+    //     //     return $this->redirectTo;
+    //     // }
+    // }
 }

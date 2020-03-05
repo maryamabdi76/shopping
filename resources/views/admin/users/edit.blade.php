@@ -94,14 +94,13 @@
                             </div>
                         </div>
 
-                        {{-- <div class="form-group row">
+                        <div class="form-group row">
                             <label for="role" class="col-md-4 col-form-label text-md-left">{{ __('نقش') }}</label>
-
                             <div class="col-md-6">
                                 <select id="role" name="role" class="form-control @error('role') is-invalid @enderror" name="role" value="{{ old('role') }}" required autocomplete="role">
                                     <option value="" disabled @if(empty($user->role)) selected @endif>نقش</option>
                                     @foreach($role as $v)
-                                    <option value="{{$v->id}}" @if($v->name==$user->role) selected @endif>{{$v->name}}</option>
+                                    <option value="{{$v->id}}" @if($v->name==$user->role[0]->name) selected @endif>{{$v->name}}</option>
                                     @endforeach
                                 </select>
 
@@ -111,7 +110,7 @@
                                     </span>
                                 @enderror
                             </div>
-                        </div> --}}
+                        </div>
 
                         <div class="form-group row">
                             <label for="mobile" class="col-md-4 col-form-label text-md-left">{{ __('موبایل') }}</label>

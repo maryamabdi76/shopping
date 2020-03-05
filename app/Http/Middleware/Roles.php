@@ -18,7 +18,6 @@ class Roles
      */
     public function handle($request, Closure $next)
     {
-
         $id = auth()->user()->id;
         $user = Users::find($id);
         foreach ($user->role as $role)
@@ -29,6 +28,7 @@ class Roles
                 return redirect()->route('profile');
                 // return $next($request);
             }
-        return redirect()->route('profile');
+        abort(403);
+        // return redirect()->route('profile');
     }
 }
