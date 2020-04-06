@@ -28,6 +28,7 @@
     {{-- <link rel="stylesheet" href="{{asset('css/style.css')}}"> --}}
     <link rel="stylesheet" href="{{asset('vendors/overlayScrollbars/css/OverlayScrollbars.min.css')}}" />
     <link rel="stylesheet" href="{{asset('css/adminlte.css')}}">
+    {{-- <link rel="stylesheet" href="{{asset('css/custom-style.css')}}"> --}}
 
     {{-- <link rel="stylesheet" href="{{asset('css/styleForm.css')}}"> --}}
     {{-- <link rel="stylesheet" href="css/responsive.css" /> --}}

@@ -17,11 +17,12 @@
 
 
 <script src="{{asset('vendors/overlayScrollbars/js/jquery.overlayScrollbars.min.js')}}"></script>
-<script src="{{asset('js/adminlte.js')}}"></script>
 <script src="{{asset('js/demo.js')}}"></script>
 <script src="{{asset('vendors/jquery-mousewheel/jquery.mousewheel.js')}}"></script>
 <script src="{{asset('vendors/raphael/raphael.min.js')}}"></script>
 <script src="{{asset('vendors/jquery-mapael/jquery.mapael.min.js')}}"></script>
 <script src="{{asset('vendors/jquery-mapael/maps/usa_states.min.js')}}"></script>
 <script src="{{asset('vendors/chart.js/Chart.min.js')}}"></script>
-<script src="{{asset('js/pages/dashboard2.js')}}"></script>
+{{-- <script src="{{asset('js/pages/dashboard2.js')}}"></script> --}}
+
+<script src="{{asset('js/adminlte.js')}}"></script>

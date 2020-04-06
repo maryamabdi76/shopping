@@ -81,7 +81,7 @@
               </li>
             </ul>
           </li>
-          
+
           <li class="nav-item">
             <a href="{{ route('admin.review.index') }}" class="nav-link">
                 <i class="nav-icon fa fa-comments"></i>
